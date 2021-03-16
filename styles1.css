@@ -1,0 +1,686 @@
+body {
+    background-image: url('waves.jpg');
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+/*
+Font Stuff
+*/
+
+.bigHeading {
+    text-align: center;
+    font-size: 4em;
+    margin-top: 75px;
+    font-family: 'montserrat';
+    padding: 0px;
+}
+
+.eyeHeading {
+    font-family: 'montserrat';
+    text-align: left;
+    margin-left: 350px;
+    font-size: 3em;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+}
+
+h1 {
+    font-family: 'montserrat';
+    text-align: center;
+    font-size: 3em;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+}
+
+h2 {
+    margin-left: 10px;
+    font-size: 14px;
+    position: relative;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 1px;
+    font-size: 12px;
+    position: relative;
+    left: 34px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:dodgerblue;
+    font-style: italic;
+}
+
+h4 {
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    left: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+p {
+    text-align: left;
+    padding: 5px 85px 5px 85px;
+    font-size: 1.5em;
+    font-family: 'roboto';
+    line-height: 50px;
+}
+
+.descriptionHeading {
+    font-family: 'montserrat';
+    text-align: left;
+    font-size: 1.5em;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 85px;
+}
+
+.description {
+    text-align: left;
+    padding: 5px 85px 5px 85px;
+    font-size: 1em;
+    font-family: 'roboto';
+    line-height: 35px;
+}
+
+.tab {
+    text-indent: 50px;
+    text-align: left;
+    padding: 5px 85px 5px 85px;
+    font-size: 1.5em;
+    font-family: 'roboto';
+    line-height: 50px;
+}
+
+.citation {
+    font-size: 0.75em;
+    text-align: center;
+    padding: 5px 85px 5px 85px;
+    font-family: 'roboto';
+    line-height: 25px;
+}
+
+hr {
+    padding: 0px;
+    width: 705px;
+    border: solid black 2px;
+}
+
+.endPost {
+    width: 705px;
+    border: solid black 1px;
+}
+
+/*
+Sidebar
+*/
+.sidebar {
+    position: fixed;
+    float: left;
+    z-index: 1;
+    overflow-x: hidden;
+    top: 15px;
+    left: 50px;
+    width: 250px;
+    height: 600px;
+    background-color: lightgray;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    border-radius: 16px;
+}
+
+.profile {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border: 2px solid white;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 2px;
+}
+    
+.links {
+    position: fixed;
+    z-index: 2;
+    width: 250px;
+    height: 305px;
+    top: 275px;
+    left: 100px;
+    background-color: whitesmoke;
+    margin-bottom: 0px;
+    border-top: solid whitesmoke 10px;
+    border-bottom: solid whitesmoke 10px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 14px;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+}
+
+.link > i {
+    margin-right: 15px;
+}
+
+.linkActive {
+    font-weight: bold;
+}
+
+.link:hover {
+    position: relative;
+    left: 35px;
+    width: 140px;
+    color: white;
+    background:dodgerblue;
+    font-weight: bold;
+}
+
+.material-icons {
+    size: 14px;
+    color: tan;
+}
+
+.bi bi-linkedin {
+    size: 14px;
+    padding: 12px;
+    color: darkblue;
+}
+
+/*
+Main Content
+*/
+
+.content {
+    width: 875px;
+    height: 2200px;
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 365px;
+    margin-right: 50px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.iFrameContainer {
+    position: relative;
+    width: 875px;
+    padding-bottom: 56.25%;
+    height: 0px;
+    background-color:lightgray;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.iFrameContainer iframe {
+    position: absolute;
+    top:0px;
+    left: 0px;
+    height: 400px;
+    width: 75%;
+    top: 50px;
+    left: 100px;
+}
+
+.contactContainer {
+    margin: 0px;
+    display: flex;
+    width: 875px;
+    background-color:#181818;
+    height: 75px;
+    z-index: 3;
+    position: absolute;
+    align-items: center;
+}
+
+.resume {
+    position: relative;
+    float: left;
+    height: 30px;
+    width:140px;
+    margin-bottom: 10px;
+    margin-left: 250px;
+    margin-right: 100px;
+    border-radius: 14px;
+    padding: 7px 7px 7px 7px;
+    border: none;
+    background-color: dodgerblue;
+    text-transform: uppercase;
+}
+
+.download {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.download:hover {
+    font-weight: bold;
+}
+
+.footer {
+    display: flex;
+    width: 875px;
+    background-color:#080808;
+    height: 200px;
+    z-index: 3;
+    position: absolute;
+    margin-top: 75px;
+    align-items: center;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    left: 350px;
+    top: 0px;
+    border-radius: 50%;
+    border: dodgerblue solid 5px;
+}
+
+.creator {
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    text-align: center;
+    position: relative;
+    left: 130px;
+    top: 75px;
+}
+
+/*
+Repo Page Content
+*/
+
+.repoContent {
+    width: 875px;
+    height: 2500px;
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 365px;
+    margin-right: 50px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.content {
+    width: 875px;
+    height: 2200px;
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 365px;
+    margin-right: 50px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.imageContainer{
+    width: 450px;
+    height: 220px;
+    margin-left: 23%;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    padding: 0px 10px 0px 10px;
+    border-radius: 16px;
+}
+
+.imageContainer1{
+    width: 400px;
+    height: 220px;
+    background-color:white;
+    align-items: center;
+    display: flex;
+    margin-left: 25%;
+    padding: 0px 10px 0px 10px;
+    border-radius: 16px;
+}
+
+.pacmanOpen {
+    width: 200px;
+    height: 200px;
+    padding-right: 50px;
+    float:left
+}
+
+.pacmanClose {
+    width: 200px;
+    height: 200px;
+}
+
+.eye1 {
+    width: 200px;
+    height: 200px;
+    padding-right: 0px;
+    float:left
+}
+
+.eye2 {
+    width: 200px;
+    height: 200px;
+}
+
+.imageContainer2{
+    width: 550px;
+    height: 330px;
+    display: flex;
+    margin-left: 17%;
+    background-color: white;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    border-radius: 16px;
+}
+
+.bus {
+    width: 550px;
+    height: 310px;   
+}
+
+.repoLinkContainer {
+    width: 175px;
+    height: 40px;
+    background-color: black;
+    margin-left: 325px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.repoLinkContainer1 {
+    width: 130px;
+    height: 40px;
+    background-color: black;
+    margin-left: 325px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.repoLink{
+    display: block;
+    text-align: center;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    padding: 10px 10px 10px 10px;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+.repoLink:hover {
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
+
+.repoLinkContainer1:hover {
+    background-color: dodgerblue;
+}
+
+.repoLinkContainer:hover {
+    background-color: dodgerblue;
+}
+
+.whiteSpace {
+    width: 875px;
+    height: 25px;
+    background-color: white;
+}
+
+/*
+For Phones
+*/
+
+@media only screen and (min-width: 150px) and (max-width: 600px){
+    body {
+        height: 100vh;
+        width: 100%;
+        margin: 0px;
+    }
+    
+    .sidebar {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100px;
+        margin-left: 0px;
+        border-radius: 0px;
+    }
+
+    .profile {
+        position: relative;
+        top: 10px;
+        left: 100px;
+        height: 50px;
+        width: 50px;  
+    }
+
+    h3 {
+        display: none;
+    }
+
+    h4 {
+       display: none;
+    }
+
+    .links {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 175px;
+        top: 100px;
+        left: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    
+    .link {
+        position: relative;
+        left: 110px;
+        color: black;
+        font-size: .5em;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .content {
+        position: absolute;
+        width: 90%;
+        top: 0px;
+        left: 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 1200px;
+    }
+
+    .bigHeading {
+        text-align: center;
+        font-size: 1em;
+        margin-top: 300px;
+        padding-top: 25px;
+    }
+    hr {
+        width: 90%;
+    }
+
+    .iFrameContainer {
+       display: none;
+    }
+    
+    .iFrameContainer iframe {
+        display: none;
+    }
+
+    p {
+        padding: 0px;
+        font-size: .75em;
+        line-height: 25px;
+        padding: 5px 5px 5px 5px;
+    }
+
+    .tab {
+        padding: 0px;
+        font-size: .75em;
+        line-height: 25px;
+        padding: 5px 5px 5px 5px;
+    }
+    
+    .citation {
+        display: none;
+    }
+
+    .endPost {
+        width: 90%;
+    }
+    
+    .contactContainer {
+        width: 100%;
+        height: 75px;
+        left: 0px;
+    }
+    
+    .resume {
+        height: 30px;
+        width:100px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+
+    h2 {
+        margin-left: 5px;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .download { 
+        font-size: 8px;
+    }
+    
+    .footer {
+        width: 100%;
+        height: 100px;
+    }
+    
+    .logo {
+       display: none;
+    }
+    
+    .creator {
+        font-size: 12px;
+        left: 75px;
+        top:0px;
+    }
+
+    .repoContent {
+        position: absolute;
+        width: 90%;
+        top: 250px;
+        left: 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 1550px;
+    }
+    
+    .imageContainer{
+        display: none;
+    }
+    
+    .imageContainer1{
+        display: none;
+    }
+    
+    .pacmanOpen {
+        display: none;
+    }
+    
+    .pacmanClose {
+        display: none;
+    }
+    
+    .eye1 {
+        display: none;
+    }
+    
+    .eye2 {
+        display: none;
+    }
+    
+    .imageContainer2{
+        display: none;
+    }
+    
+    .bus {
+        display: none; 
+    }
+    
+    .repoLinkContainer {
+        width: 175px;
+        height: 40px;
+        margin-left: 0px;
+        margin-bottom: 25px;
+    }
+    
+    .repoLinkContainer1 {
+        width: 175px;
+        height: 40px;
+        margin-left: 0px;
+        margin-bottom: 25px;
+    }
+    
+    .repoLink{
+        font-size: 12px;   
+    }
+    
+
+    .whiteSpace {
+        width: 90%;
+    }
+
+    .descriptionHeading {
+        text-align: left;
+        font-size: 1em;
+        margin-top: 25px;
+        padding-top: 25px;
+    }
+
+    .description {
+        padding: 0px;
+        font-size: .75em;
+        line-height: 25px;
+        padding: 5px 5px 5px 5px;
+    }
+
+    h1 {
+        font-size: 1.75em;
+    }
+
+    .eyeHeading {
+        margin-left: 125px;
+        position: relative;
+        margin-bottom: 10px;
+        left: 0px;
+        font-size: 1.75em;
+    }
+}

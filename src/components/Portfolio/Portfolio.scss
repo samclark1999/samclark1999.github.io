@@ -1,0 +1,207 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.portfolio-section {
+  background-color: white;
+  
+  .section-title {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(45deg, $primary-color, $accent-color);
+      border-radius: 2px;
+    }
+  }
+  
+  .portfolio-filters {
+    .filter-btn {
+      background: transparent;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+      padding: 0.75rem 1.5rem;
+      margin: 0 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 600;
+      @include transition();
+      
+      &:hover,
+      &.active {
+        background: $primary-color;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($primary-color, 0.3);
+      }
+    }
+  }
+  
+  .portfolio-grid {
+    .portfolio-item {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      @include transition();
+      
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      
+      .portfolio-image {
+        position: relative;
+        overflow: hidden;
+        
+        .image-placeholder {
+          height: 250px;
+          @include transition();
+        }
+        
+        .portfolio-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba($primary-color, 0.9);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          @include transition();
+          
+          .portfolio-actions {
+            .btn {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              @include flex-center();
+              @include transition();
+              
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+        
+        &:hover .portfolio-overlay {
+          opacity: 1;
+        }
+      }
+      
+      .portfolio-content {
+        .portfolio-title {
+          color: $text-dark;
+          @include transition();
+        }
+        
+        .portfolio-description {
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+        
+        .portfolio-technologies {
+          .badge {
+            font-size: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 15px;
+            font-weight: 500;
+          }
+        }
+        
+        .portfolio-links {
+          .btn {
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            @include transition();
+            
+            &:hover {
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+      
+      &:hover .portfolio-title {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+// Animation for portfolio items
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-item {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+// Responsive design
+@include media-breakpoint-down(lg) {
+  .portfolio-section {
+    .portfolio-filters {
+      .filter-btn {
+        margin: 0 0.25rem 0.75rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .portfolio-grid {
+      .portfolio-item {
+        .portfolio-image {
+          .image-placeholder {
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .portfolio-section {
+    .section-title {
+      font-size: 2.5rem;
+    }
+    
+    .portfolio-filters {
+      .filter-btn {
+        display: block;
+        width: 100%;
+        margin: 0 0 0.5rem;
+      }
+    }
+    
+    .portfolio-grid {
+      .portfolio-item {
+        margin-bottom: 2rem;
+        
+        .portfolio-content {
+          .portfolio-links {
+            .btn {
+              width: 100%;
+              margin-bottom: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

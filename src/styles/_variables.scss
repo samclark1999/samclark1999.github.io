@@ -1,0 +1,39 @@
+// Custom SASS variables
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$info-color: #17a2b8;
+$warning-color: #ffc107;
+$danger-color: #dc3545;
+$light-color: #f8f9fa;
+$dark-color: #343a40;
+
+// Custom colors
+$accent-color: #6f42c1;
+$text-dark: #212529;
+$text-light: #6c757d;
+$bg-light: #f8f9fa;
+$bg-dark: #212529;
+
+// Typography
+$font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+
+// Spacing
+$spacer: 1rem;
+$section-padding: 5rem 0;
+
+// Breakpoints (Bootstrap defaults)
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Box shadow
+$box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);

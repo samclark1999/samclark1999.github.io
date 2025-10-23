@@ -1,0 +1,190 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%);
+  @include flex-center();
+  overflow: hidden;
+  padding-top: 80px; // Account for fixed navbar
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .hero-title {
+    margin-bottom: 1.5rem;
+    
+    .text-gradient {
+      background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0.8));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+  
+  .hero-subtitle {
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-description {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+  }
+  
+  .hero-buttons {
+    .btn {
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      @include transition();
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    
+    .btn-link {
+      text-decoration: none;
+      
+      &:hover {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+    }
+  }
+}
+
+// Background decorative elements
+.hero-bg-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  
+  .hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 6s ease-in-out infinite;
+    
+    &.hero-circle-1 {
+      width: 200px;
+      height: 200px;
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    &.hero-circle-2 {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+    
+    &.hero-circle-3 {
+      width: 100px;
+      height: 100px;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Responsive design
+@include media-breakpoint-down(md) {
+  .hero-section {
+    padding-top: 100px;
+    
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+    
+    .hero-description {
+      font-size: 1rem;
+    }
+    
+    .hero-buttons {
+      .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  
+  .hero-bg-elements {
+    .hero-circle {
+      &.hero-circle-1 {
+        width: 100px;
+        height: 100px;
+      }
+      
+      &.hero-circle-2 {
+        width: 80px;
+        height: 80px;
+      }
+      
+      &.hero-circle-3 {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+}

@@ -23,7 +23,7 @@ const Hero = () => {
                 <span className="text-gradient">Sam Clark</span>
               </h1>
               <h2 className="hero-subtitle h3 mb-4 text-light opacity-75">
-                Full Stack Developer & UI/UX Designer
+                Full Stack Developer
               </h2>
               <p className="hero-description lead mb-5 text-light opacity-75">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod 

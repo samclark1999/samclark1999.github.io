@@ -3,12 +3,12 @@ import './About.scss';
 
 const About = () => {
   const skills = [
-    { name: 'React.js', level: 95, icon: 'bi-code-slash' },
-    { name: 'JavaScript', level: 90, icon: 'bi-braces' },
-    { name: 'Node.js', level: 85, icon: 'bi-server' },
-    { name: 'Python', level: 80, icon: 'bi-terminal' },
-    { name: 'UI/UX Design', level: 88, icon: 'bi-palette' },
-    { name: 'MongoDB', level: 75, icon: 'bi-database' },
+    { name: 'React.js', icon: 'bi-code-slash' },
+    { name: 'JavaScript', icon: 'bi-braces' },
+    { name: 'Node.js', icon: 'bi-server' },
+    { name: 'Python', icon: 'bi-terminal' },
+    { name: 'UI/UX Design', icon: 'bi-palette' },
+    { name: 'MongoDB', icon: 'bi-database' },
   ];
 
   return (
@@ -37,7 +37,7 @@ const About = () => {
           <div className="col-lg-6">
             <div className="about-content">
               <h3 className="h2 fw-bold mb-4">
-                Passionate Developer & Designer
+                Passionate Developer
               </h3>
               <p className="mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod 
@@ -53,28 +53,23 @@ const About = () => {
               <div className="about-stats row text-center mb-4">
                 <div className="col-4">
                   <div className="stat-item">
-                    <h4 className="stat-number fw-bold text-primary">50+</h4>
-                    <p className="stat-label text-muted mb-0">Projects</p>
+                    <h4 className="stat-number fw-bold text-primary">1000+</h4>
+                    <p className="stat-label text-muted mb-0">Tasks</p>
                   </div>
                 </div>
                 <div className="col-4">
                   <div className="stat-item">
-                    <h4 className="stat-number fw-bold text-primary">3+</h4>
+                    <h4 className="stat-number fw-bold text-primary">3.5+</h4>
                     <p className="stat-label text-muted mb-0">Years Experience</p>
                   </div>
                 </div>
                 <div className="col-4">
                   <div className="stat-item">
-                    <h4 className="stat-number fw-bold text-primary">25+</h4>
-                    <p className="stat-label text-muted mb-0">Happy Clients</p>
+                    <h4 className="stat-number fw-bold text-primary">10+</h4>
+                    <p className="stat-label text-muted mb-0">Client Retainers</p>
                   </div>
                 </div>
               </div>
-              
-              <a href="#contact" className="btn btn-primary btn-lg">
-                <i className="bi bi-download me-2"></i>
-                Download CV
-              </a>
             </div>
           </div>
         </div>
@@ -99,19 +94,9 @@ const About = () => {
                   <i className={`${skill.icon} me-3 text-primary fs-4`}></i>
                   <div className="skill-info flex-grow-1">
                     <h5 className="skill-name mb-0">{skill.name}</h5>
-                    <span className="skill-percentage text-primary fw-bold">{skill.level}%</span>
                   </div>
                 </div>
-                <div className="progress skill-progress">
-                  <div 
-                    className="progress-bar bg-primary" 
-                    role="progressbar" 
-                    style={{ width: `${skill.level}%` }}
-                    aria-valuenow={skill.level} 
-                    aria-valuemin="0" 
-                    aria-valuemax="100"
-                  ></div>
-                </div>
+              
               </div>
             </div>
           ))}

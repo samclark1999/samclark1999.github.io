@@ -91,18 +91,6 @@ const Header = () => {
             <li className="nav-item">
               <a 
                 className="nav-link" 
-                href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('services');
-                }}
-              >
-                Services
-              </a>
-            </li>
-            <li className="nav-item">
-              <a 
-                className="nav-link" 
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();

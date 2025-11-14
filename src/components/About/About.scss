@@ -22,18 +22,11 @@
   
   .about-image-wrapper {
     position: relative;
+    border-radius: 20px;
+    box-shadow: $box-shadow-lg;
     
-    .about-image-placeholder {
-      width: 100%;
-      height: 400px;
+    .profile-pic {
       border-radius: 20px;
-      box-shadow: $box-shadow-lg;
-      @include transition();
-      
-      &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      }
     }
   }
   
@@ -64,12 +57,39 @@
     }
   }
   
+  .skills-filters {
+    .skill-filter-btn {
+      background: white;
+      border: 2px solid #e9ecef;
+      color: $text-dark;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      @include transition();
+      
+      &:hover {
+        border-color: $primary-color;
+        color: $primary-color;
+        transform: translateY(-2px);
+        box-shadow: $box-shadow;
+      }
+      
+      &.active {
+        background: $primary-color;
+        border-color: $primary-color;
+        color: white;
+        box-shadow: $box-shadow-lg;
+      }
+    }
+  }
+  
   .skill-item {
     background: white;
-    padding: 1.5rem;
     border-radius: 15px;
     box-shadow: $box-shadow;
     @include transition();
+    height: 100%;
     
     &:hover {
       transform: translateY(-3px);
@@ -77,31 +97,18 @@
     }
     
     .skill-header {
+      border: none;
+      
       .skill-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .skill-name {
-        font-weight: 600;
-        color: $text-dark;
-      }
-      
-      .skill-percentage {
-        font-size: 0.9rem;
-      }
-    }
-    
-    .skill-progress {
-      height: 8px;
-      border-radius: 10px;
-      background-color: #f0f0f0;
-      
-      .progress-bar {
-        border-radius: 10px;
-        @include transition(width, 1.5s, ease-in-out);
-        background: linear-gradient(45deg, $primary-color, $accent-color);
+        .skill-name {
+          font-weight: 600;
+          color: $text-dark;
+        }
+        
+        small {
+          font-size: 0.75rem;
+          opacity: 0.8;
+        }
       }
     }
   }
@@ -110,17 +117,18 @@
 // Responsive design
 @include media-breakpoint-down(lg) {
   .about-section {
-    .about-image-wrapper {
-      .about-image-placeholder {
-        height: 300px;
-      }
-    }
-    
     .about-stats {
       margin-bottom: 2rem;
       
       .stat-item {
         margin-bottom: 1rem;
+      }
+    }
+    
+    .skills-filters {
+      .skill-filter-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
       }
     }
   }
@@ -140,8 +148,20 @@
       }
     }
     
+    .skills-filters {
+      .skill-filter-btn {
+        display: inline-block;
+        width: auto;
+        margin: 0.25rem;
+      }
+    }
+    
     .skill-item {
       margin-bottom: 1rem;
+      
+      .skill-header {
+        padding: 1rem;
+      }
     }
   }
 }

@@ -3,9 +3,29 @@
 
 .contact-section {
   background-color: $bg-light;
+  background-image: url("../../images/rainier.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
   
   .section-title {
-    position: relative;
     
     &::after {
       content: '';
@@ -15,13 +35,13 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(45deg, $primary-color, $accent-color);
+      background: $text-dark;
       border-radius: 2px;
     }
   }
   
   .contact-info {
-    background: white;
+    background: rgba(255, 255, 249, 0.9);;
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: $box-shadow;
@@ -80,65 +100,6 @@
     }
   }
   
-  .contact-form-wrapper {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: $box-shadow;
-    
-    .contact-form {
-      .form-group {
-        .form-label {
-          color: $text-dark;
-          margin-bottom: 0.75rem;
-        }
-        
-        .form-control {
-          border: 2px solid #e9ecef;
-          border-radius: 10px;
-          padding: 1rem 1.25rem;
-          font-size: 1rem;
-          @include transition();
-          
-          &:focus {
-            border-color: $primary-color;
-            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
-          }
-          
-          &::placeholder {
-            color: #adb5bd;
-            font-style: italic;
-          }
-        }
-        
-        textarea.form-control {
-          resize: vertical;
-          min-height: 120px;
-        }
-      }
-      
-      .btn-primary {
-        background: linear-gradient(45deg, $primary-color, $accent-color);
-        border: none;
-        border-radius: 10px;
-        padding: 1rem 2rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        @include transition();
-        
-        &:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba($primary-color, 0.3);
-        }
-        
-        &:active {
-          transform: translateY(0);
-        }
-      }
-    }
-  }
-  
   .cta-section {
     background: linear-gradient(135deg, $primary-color, $accent-color) !important;
     box-shadow: $box-shadow-lg;
@@ -184,15 +145,10 @@
   animation: slideInFromLeft 0.6s ease-out;
 }
 
-.contact-form-wrapper {
-  animation: slideInFromRight 0.6s ease-out;
-}
-
 // Responsive design
 @include media-breakpoint-down(lg) {
   .contact-section {
-    .contact-info,
-    .contact-form-wrapper {
+    .contact-info {
       padding: 2rem;
     }
     
@@ -208,8 +164,7 @@
       font-size: 2.5rem;
     }
     
-    .contact-info,
-    .contact-form-wrapper {
+    .contact-info {
       padding: 1.5rem;
     }
     

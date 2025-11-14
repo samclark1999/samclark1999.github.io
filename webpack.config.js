@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
+  const isWatch = argv.watch || false;
   
   return {
     entry: './src/index.js',
@@ -11,6 +12,12 @@ module.exports = (env, argv) => {
       filename: isProduction ? '[name].[contenthash].js' : 'bundle.js',
       clean: true,
       publicPath: '/',
+    },
+    // Watch mode configuration
+    watchOptions: {
+      ignored: /node_modules/,
+      aggregateTimeout: 300, // Delay before rebuilding (ms)
+      poll: false, // Use file system events instead of polling
     },
   module: {
     rules: [

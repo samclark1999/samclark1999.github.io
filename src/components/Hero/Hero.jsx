@@ -22,13 +22,14 @@ const Hero = () => {
                 Hello, I'm{' '}
                 <span className="text-gradient">Sam Clark</span>
               </h1>
-              <h2 className="hero-subtitle h3 mb-4 text-light opacity-75">
-                Full Stack Developer
+              <h2 className="hero-subtitle h3 mb-2 text-light">
+                Full Stack Web Developer
               </h2>
-              <p className="hero-description lead mb-5 text-light opacity-75">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <p className="current-job lead mb-5 text-light">
+                Currently working at <a href="https://www.level.agency/" target="_blank" rel="noopener noreferrer">Level Agency</a>
+              </p>
+              <p className="hero-description lead mb-5 text-light ">
+                I create AI-enhanced, SEO-first websites that don’t just look good—they work hard behind the scenes to drive results and growth.
               </p>
               <div className="hero-buttons d-flex flex-column flex-sm-row gap-3 justify-content-center">
                 <button 

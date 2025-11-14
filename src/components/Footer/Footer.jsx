@@ -129,12 +129,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Background Elements */}
-      <div className="footer-bg-elements">
-        <div className="footer-circle footer-circle-1"></div>
-        <div className="footer-circle footer-circle-2"></div>
-      </div>
     </footer>
   );
 };

@@ -36,7 +36,7 @@ const Contact = () => {
         <div className="row">
           <div className="col-12 text-center mb-5">
             <h2 className="section-title display-4 fw-bold mb-3">
-              Get In <span className="text-primary">Touch</span>
+              Get In Touch
             </h2>
             <p className="section-subtitle lead text-muted">
               Let's connect! Feel free to reach out using any of the methods below.
@@ -44,7 +44,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row justify-content-center">
           {/* Contact Information */}
           <div className="col-lg-4 mb-5 mb-lg-0">
             <div className="contact-info">
@@ -75,15 +75,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
-
-          {/* Image */}
-          <div className="col-lg-8">
-            <div className="contact-form-wrapper">
-              <div className="image-placeholder bg-light d-flex align-items-center justify-content-center h-100" style={{minHeight: '400px'}}>
-                <i className="bi bi-person-workspace display-1 text-muted"></i>
-              </div>
-            </div>
-          </div>
+          
         </div>
 
         {/* CTA Section */}

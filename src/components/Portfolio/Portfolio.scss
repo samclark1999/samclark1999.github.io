@@ -1,5 +1,5 @@
-@import "../../styles/variables";
-@import "../../styles/mixins";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .portfolio-section {
   background-color: white;
@@ -39,6 +39,14 @@
       
       .portfolio-image {
         overflow: hidden;
+        height: 250px;
+        
+        .portfolio-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          @include transition();
+        }
         
         .image-placeholder {
           height: 250px;

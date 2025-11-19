@@ -1,22 +1,26 @@
+@use "sass:color";
+@use "sass:map";
+@use "variables" as *;
+
 // Responsive mixins
 @mixin media-breakpoint-up($breakpoint) {
   @if $breakpoint == xs {
     @content;
   } @else {
-    @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
+    @media (min-width: map.get($grid-breakpoints, $breakpoint)) {
       @content;
     }
   }
 }
 
 @mixin media-breakpoint-down($breakpoint) {
-  @media (max-width: #{map-get($grid-breakpoints, $breakpoint) - 1px}) {
+  @media (max-width: #{map.get($grid-breakpoints, $breakpoint) - 1px}) {
     @content;
   }
 }
 
 // Button mixins
-@mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%)) {
+@mixin button-variant($background, $border, $hover-background: color.adjust($background, $lightness: -7.5%), $hover-border: color.adjust($border, $lightness: -10%)) {
   background-color: $background;
   border-color: $border;
   

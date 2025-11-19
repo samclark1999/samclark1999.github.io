@@ -5,51 +5,57 @@ const Portfolio = () => {
   const portfolioItems = [
     {
       id: 1,
-      title: 'Coming Soon',
-      image: 'placeholder-1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Modern e-commerce solution built with React and Node.js.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
-      github: '#'
+      title: 'My Personal Website',
+      image: '/src/images/portfolio.webp',
+      description: 'This repo contains the code used too build this website.',
+      technologies: ['React', 'Node.js', 'WebPack', 'Bootstrap', 'SASS'],
+      github: 'https://github.com/samclark1999/samclark1999.github.io',
+      isClient: false
     },
     {
       id: 2,
-      title: 'Coming Soon',
-      image: 'placeholder-2',
-      description: 'Sed do eiusmod tempor incididunt ut labore. Secure mobile banking application with biometric authentication.',
-      technologies: ['React Native', 'Firebase', 'Redux'],
-      github: '#'
+      title: 'Clark Financial',
+      image: './src/images/clark-financial.webp',
+      description: 'Clark financial is a full-stack banking application. Allows the user to create account, login, and keep track of deposits and withdraws. It has capability to store data of each user and retrieve that data on login.',
+      technologies: ['React', 'Node.js', 'Docker', 'MongoDB', 'Bootstrap', 'Google Cloud'],
+      github: 'https://github.com/samclark1999/Clark-Financial-Full-Stack',
+      isClient: false
     },
     {
       id: 3,
-      title: 'Coming Soon',
-      image: 'placeholder-3',
-      description: 'Et dolore magna aliqua. Complete brand identity package including logo, colors, and guidelines.',
-      technologies: ['Adobe Illustrator', 'Photoshop', 'Figma'],
-      github: '#'
+      title: 'To-Do List',
+      image: '/src/images/to-do-list.webp',
+      description: 'To-Do List is an application developed using React. It has the functionality to allow users to create a to-do, complete or delete a to-do, and sort to-dos by completed or uncompleted.',
+      technologies: ['React', 'Node.js'],
+      github: '',
+      isClient: false
     },
     {
       id: 4,
-      title: 'Coming Soon',
-      image: 'placeholder-4',
-      description: 'Ut enim ad minim veniam. Collaborative project management tool with real-time updates.',
-      technologies: ['Vue.js', 'Laravel', 'MySQL', 'Socket.io'],
-      github: '#'
+      title: 'Post Status Changer',
+      image: '/src/images/WP-blue-bg.webp',
+      description: 'This is a WordPress plugin with a GUI to change the post status for multiple posts at once.',
+      technologies: ['PHP', 'WordPress', 'JavaScript', 'jQuery'],
+      github: 'https://github.com/samclark1999/wp-post-status-changer',
+      isClient: false
     },
     {
       id: 5,
-      title: 'Coming Soon',
-      image: 'placeholder-5',
-      description: 'Quis nostrud exercitation ullamco. Comprehensive fitness tracking with workout plans and nutrition.',
-      technologies: ['Flutter', 'Dart', 'SQLite'],
-      github: '#'
+      title: 'Anderson Advisors',
+      image: '/src/images/WP-orange-bg.webp',
+      description: 'This is a client WordPress website built for a financial advisory business. I was the lead developer who replatformed their site to a custom WP theme.',
+      technologies: ['WordPress', 'PHP', 'JavaScript', 'SASS'],
+      github: 'https://andersonadvisors.com',
+      isClient: true
     },
     {
       id: 6,
-      title: 'Coming Soon',
-      image: 'placeholder-6',
-      description: 'Laboris nisi ut aliquip ex ea. Elegant restaurant website with online reservation system.',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP'],
-      github: '#'
+      title: 'WareSpace',
+      image: '/src/images/WP-blue-bg.webp',
+      description: 'This is a WordPress website for a warehousing and storage solutions company. I was the lead developer who replatformed their site to a custom WP theme.',
+      technologies: ['WordPress', 'PHP', 'JavaScript', 'SASS'],
+      github: 'https://warespace.com',
+      isClient: true
     }
   ];
 
@@ -92,17 +98,28 @@ const Portfolio = () => {
                     ))}
                   </div>
                   
-                  <div className="portfolio-links">
-                    <a 
-                      href={item.github} 
-                      className="btn btn-outline-secondary btn-sm stretched-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="bi bi-github me-1"></i>
-                      View Code
-                    </a>
-                  </div>
+                  {item.github && (
+                    <div className="portfolio-links">
+                      <a 
+                        href={item.github} 
+                        className="btn btn-outline-secondary btn-sm stretched-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.isClient ? (
+                          <>
+                            <i className="bi bi-arrow-up-right me-1"></i>
+                            Go to Site
+                          </>
+                        ) : (
+                          <>
+                            <i className="bi bi-github me-1"></i>
+                            View Code
+                          </>
+                        )}
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

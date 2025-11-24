@@ -50,17 +50,6 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="scroll-indicator">
-          <button 
-            className="btn btn-link text-light"
-            onClick={() => scrollToSection('about')}
-            aria-label="Scroll to about section"
-          >
-            <i className="bi bi-chevron-down fs-2"></i>
-          </button>
-        </div>
       </div>
       
       {/* Background elements */}

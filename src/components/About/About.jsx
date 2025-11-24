@@ -112,7 +112,7 @@ const About = () => {
             <div className="about-image-wrapper">
               <img
                 src={profilePic}
-                alt="Sam Clark"
+                alt="Sam Clark, Full Stack Web Developer"
                 className="profile-pic img-fluid"
                 onError={(e) => {
                   e.target.style.display = 'none';
@@ -199,8 +199,8 @@ const About = () => {
                 <div className="skill-header d-flex align-items-center p-3">
                   <i className={`${skill.icon} me-3 text-primary fs-4`}></i>
                   <div className="skill-info flex-grow-1">
-                    <h6 className="skill-name mb-0 fw-bold">{skill.name}</h6>
-                    <small className="text-muted text-capitalize">{skill.category.replace('-', ' ')}</small>
+                    <h4 className="skill-name mb-0 fw-bold">{skill.name}</h4>
+                    <small className="text-capitalize">{skill.category.replace('-', ' ')}</small>
                   </div>
                 </div>
               </div>

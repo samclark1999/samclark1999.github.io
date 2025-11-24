@@ -55,7 +55,7 @@ const Contact = () => {
                           <i className={`${info.icon} fs-4`}></i>
                         </div>
                         <div className="contact-content">
-                          <h5 className="contact-title">{info.title}</h5>
+                          <h3 className="contact-title">{info.title}</h3>
                           <p className="contact-description">{info.description}</p>
                         </div>
                       </a>
@@ -65,7 +65,7 @@ const Contact = () => {
                           <i className={`${info.icon} fs-4`}></i>
                         </div>
                         <div className="contact-content">
-                          <h5 className="contact-title">{info.title}</h5>
+                          <h3 className="contact-title">{info.title}</h3>
                           <p className="contact-description">{info.description}</p>
                         </div>
                       </div>

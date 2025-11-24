@@ -39,6 +39,13 @@ module.exports = (env, argv) => {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.webp$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[hash][ext][query]'
+        }
+      },
     ],
   },
   resolve: {
@@ -50,9 +57,15 @@ module.exports = (env, argv) => {
     }),
   ],
     devServer: {
-      static: {
-        directory: path.join(__dirname, 'dist'),
-      },
+      static: [
+        {
+          directory: path.join(__dirname, 'dist'),
+        },
+        {
+          directory: path.join(__dirname, 'public'),
+          publicPath: '/',
+        },
+      ],
       compress: true,
       port: 3000,
       open: false,

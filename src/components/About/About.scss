@@ -39,11 +39,6 @@
         box-shadow: $box-shadow;
         @include transition();
         
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: $box-shadow-lg;
-        }
-        
         .stat-number {
           font-size: 2rem;
           margin-bottom: 0.5rem;
@@ -91,11 +86,6 @@
     @include transition();
     height: 100%;
     
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: $box-shadow-lg;
-    }
-    
     .skill-header {
       border: none;
       
@@ -103,11 +93,7 @@
         .skill-name {
           font-weight: 600;
           color: $text-dark;
-        }
-        
-        small {
-          font-size: 0.75rem;
-          opacity: 0.8;
+          font-size: 1rem;
         }
       }
     }

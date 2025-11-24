@@ -70,7 +70,7 @@ const Footer = () => {
             {/* Quick Links */}
             <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
               <div className="footer-links">
-                <h5 className="footer-title fw-bold mb-3">Quick Links</h5>
+                <h4 className="footer-title fw-bold mb-3">Quick Links</h4>
                 <ul className="list-unstyled">
                   {footerLinks.navigation.map((link, index) => (
                     <li key={index} className="mb-2">
@@ -93,7 +93,7 @@ const Footer = () => {
             {/* Contact Info */}
             <div className="col-lg-2 col-md-12">
               <div className="footer-contact">
-                <h5 className="footer-title fw-bold mb-3">Get in Touch</h5>
+                <h4 className="footer-title fw-bold mb-3">Get in Touch</h4>
                 <div className="contact-item mb-3">
                   <i className="bi bi-geo-alt me-2 text-primary"></i>
                   <span>Seattle, WA</span>

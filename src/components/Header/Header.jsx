@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light fixed-top navbar-custom ${scrolled ? 'navbar-scrolled' : ''}`}>
+    <nav className={`navbar navbar-expand-lg navbar-light fixed-top navbar-custom py-3 ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container">
         <a 
           className="navbar-brand fw-bold" 

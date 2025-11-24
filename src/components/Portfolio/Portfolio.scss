@@ -25,8 +25,8 @@
       border: none;
       border-radius: 20px;
       overflow: hidden;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       @include transition();
-      cursor: pointer; // Ensure consistent cursor
       
       &:hover {
         transform: translateY(-10px);
@@ -57,6 +57,7 @@
       .portfolio-content {
         .portfolio-title {
           color: $text-dark;
+          font-size: 1.25rem !important;
           @include transition();
         }
         
@@ -80,8 +81,6 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             @include transition();
-            position: relative; // Ensure stretched-link works properly
-            z-index: 1; // Keep the button above other elements
           }
         }
       }

@@ -52,17 +52,11 @@ section {
   border: none;
   box-shadow: $box-shadow;
   @include transition();
-  
+
   &:hover {
     box-shadow: $box-shadow-lg;
     transform: translateY(-5px);
   }
-}
-
-// Navbar custom styles
-.navbar-custom {
-  background-color: transparent;
-  box-shadow: $box-shadow;
 }
 
 // Hero section styles

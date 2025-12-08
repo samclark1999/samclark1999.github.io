@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import './Header.scss';
+import React, { useState, useEffect } from "react";
+import "./Header.scss";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -10,91 +11,101 @@ const Header = () => {
       setScrolled(isScrolled);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+        behavior: "smooth",
+        block: "start",
       });
     }
+    setMenuOpen(false);
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light fixed-top navbar-custom py-3 ${scrolled ? 'navbar-scrolled' : ''}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-light fixed-top navbar-custom py-2 ${
+        scrolled ? "navbar-scrolled" : ""
+      }`}
+    >
       <div className="container">
-        <a 
-          className="navbar-brand fw-bold" 
+        <a
+          className="navbar-brand fw-bold"
           href="#home"
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection('home');
+            scrollToSection("home");
           }}
         >
           Sam Clark
         </a>
-        
+
         <button
-          className="navbar-toggler"
+          className={`navbar-toggler ${menuOpen ? "open" : ""}`}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
-          aria-expanded="false"
+          aria-expanded={menuOpen}
           aria-label="Toggle navigation"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          <span className="navbar-toggler-icon"></span>
+          {menuOpen ? (
+            <span className="close-icon">&times;</span>
+          ) : (
+            <span className="navbar-toggler-icon"></span>
+          )}
         </button>
-        
-        <div className="collapse navbar-collapse" id="navbarNav">
+
+        <div className="collapse navbar-collapse mt-3" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a 
-                className="nav-link" 
+              <a
+                className="nav-link"
                 href="#home"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection('home');
+                  scrollToSection("home");
                 }}
               >
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a 
-                className="nav-link" 
+              <a
+                className="nav-link"
                 href="#about"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection('about');
+                  scrollToSection("about");
                 }}
               >
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a 
-                className="nav-link" 
+              <a
+                className="nav-link"
                 href="#portfolio"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection('portfolio');
+                  scrollToSection("portfolio");
                 }}
               >
                 Portfolio
               </a>
             </li>
             <li className="nav-item">
-              <a 
-                className="nav-link" 
+              <a
+                className="nav-link"
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection('contact');
+                  scrollToSection("contact");
                 }}
               >
                 Contact

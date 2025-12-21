@@ -1,13 +1,13 @@
-import React from 'react';
-import './Hero.scss';
+import React from "react";
+import "./Hero.scss";
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -18,30 +18,37 @@ const Hero = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center">
             <div className="hero-content">
-              <h1 className="hero-title display-2 fw-bold mb-3">
-                Hello, I'm{' '}
-                <span className="text-gradient">Sam Clark</span>
+              <h1 className="hero-title display-2 fw-bold mb-3 text-white">
+                Sam Clark
               </h1>
               <h2 className="hero-subtitle h3 mb-2 text-light">
                 Full Stack Web Developer
               </h2>
               <p className="current-job lead mb-5 text-light">
-                Currently working at <a href="https://www.level.agency/" target="_blank" rel="noopener noreferrer">Level Agency</a>
+                Currently working at{" "}
+                <a
+                  href="https://www.level.agency/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Level Agency
+                </a>
               </p>
               <p className="hero-description lead mb-5 text-light ">
-                I create AI-enhanced, SEO-first websites that don’t just look good—they work hard behind the scenes to drive results and growth.
+                Crafting optimized websites that are fast, accessible and high
+                performing for clients.
               </p>
               <div className="hero-buttons d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                <button 
+                <button
                   className="btn btn-light btn-lg px-4 py-3"
-                  onClick={() => scrollToSection('portfolio')}
+                  onClick={() => scrollToSection("portfolio")}
                 >
                   <i className="bi bi-briefcase me-2"></i>
                   View My Work
                 </button>
-                <button 
+                <button
                   className="btn btn-outline-light btn-lg px-4 py-3"
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => scrollToSection("contact")}
                 >
                   <i className="bi bi-envelope me-2"></i>
                   Get In Touch
@@ -51,7 +58,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Background elements */}
       <div className="hero-bg-elements">
         <div className="hero-circle hero-circle-1"></div>

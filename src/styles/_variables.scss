@@ -1,6 +1,6 @@
 // Custom SASS variables
 $primary-color: #007aae;
-$secondary-color: #6c757d;
+$secondary-color: #023020;
 $success-color: #28a745;
 $info-color: #17a2b8;
 $warning-color: #ffc107;
@@ -9,14 +9,15 @@ $light-color: #f8f9fa;
 $dark-color: #343a40;
 
 // Custom colors
-$accent-color: #6f42c1;
+$accent-color: #023020;
 $text-dark: #212529;
 $text-light: #6c757d;
 $bg-light: #f8f9fa;
 $bg-dark: #212529;
 
 // Typography
-$font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-base: "Roboto", "Inter", sans-serif;
+$font-family-headings: "Inter", "Roboto", "sans-serif";
 $font-size-base: 1rem;
 $line-height-base: 1.6;
 
@@ -31,7 +32,7 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1400px,
 );
 
 // Box shadow

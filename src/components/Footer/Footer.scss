@@ -6,22 +6,22 @@
   background: #000;
   color: white;
   overflow: hidden;
-  
+
   .footer-main {
     position: relative;
     z-index: 2;
-    
+
     .footer-brand {
       .brand-name {
         color: white;
         margin-bottom: 1rem;
       }
-      
+
       .brand-description {
         line-height: 1.7;
         color: rgba(white, 0.8);
       }
-      
+
       .social-links {
         .social-link {
           width: 45px;
@@ -33,27 +33,27 @@
           text-decoration: none;
           @include transition();
           border: 2px solid transparent;
-          
+
           &:hover {
             background: $primary-color;
             border-color: $primary-color;
             transform: translateY(-3px);
           }
-          
+
           i {
             font-size: 1.2rem;
           }
         }
       }
     }
-    
+
     .footer-links {
       .footer-title {
         color: white;
         position: relative;
-        
+
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: -8px;
           left: 0;
@@ -62,27 +62,27 @@
           background: $primary-color;
         }
       }
-      
+
       .footer-link {
         color: rgba(white, 0.7);
         text-decoration: none;
         @include transition();
         display: inline-block;
-        
+
         &:hover {
           color: $primary-color;
           transform: translateX(5px);
         }
       }
     }
-    
+
     .footer-contact {
       .footer-title {
         color: white;
         position: relative;
-        
+
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: -8px;
           left: 0;
@@ -91,22 +91,22 @@
           background: $primary-color;
         }
       }
-      
+
       .contact-item {
         display: flex;
         align-items: center;
         color: rgba(white, 0.7);
-        
+
         i {
           flex-shrink: 0;
           width: 20px;
         }
-        
+
         .footer-link {
           color: rgba(white, 0.7);
           text-decoration: none;
           @include transition();
-          
+
           &:hover {
             color: $primary-color;
           }
@@ -114,33 +114,37 @@
       }
     }
   }
-  
+
   .footer-bottom {
     border-top: 1px solid rgba(white, 0.1);
     position: relative;
     z-index: 2;
-    
+
     .copyright-text {
       font-size: 0.9rem;
       color: rgba(white, 0.7);
     }
-    
+
     .back-to-top {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       @include flex-center();
       border: none;
       background: $primary-color;
       color: white;
       @include transition();
-      
+      z-index: 1000;
+
       &:hover {
         background: $accent-color;
         transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba($primary-color, 0.3);
       }
-      
+
       i {
         font-size: 1.2rem;
       }
@@ -155,7 +159,7 @@
       .footer-brand {
         margin-bottom: 2rem;
       }
-      
+
       .footer-links,
       .footer-contact {
         margin-bottom: 2rem;
@@ -168,17 +172,17 @@
   .footer-section {
     .footer-main {
       text-align: center;
-      
+
       .footer-brand {
         .brand-name {
           font-size: 1.8rem;
         }
-        
+
         .social-links {
           justify-content: center;
         }
       }
-      
+
       .footer-links,
       .footer-contact {
         .footer-title::after {
@@ -187,10 +191,10 @@
         }
       }
     }
-    
+
     .footer-bottom {
       text-align: center;
-      
+
       .copyright-text {
         margin-bottom: 1rem;
       }
@@ -206,7 +210,7 @@
           .social-link {
             width: 40px;
             height: 40px;
-            
+
             i {
               font-size: 1rem;
             }

@@ -1,0 +1,90 @@
+@use "./variables" as *;
+
+// Base body text
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-dark;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $font-family-headings;
+  font-weight: 800;
+  line-height: 1.2;
+  color: $text-dark;
+  text-transform: capitalize;
+}
+
+// Specific heading sizes
+h1,
+.h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h2,
+.h2 {
+  font-size: 2rem;
+  margin-bottom: 0.875rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+h4,
+.h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h5,
+.h5 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+h6,
+.h6 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+// Display classes
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+  font-family: $font-family-headings;
+  font-weight: 700;
+}
+
+// Section titles
+.section-title {
+  font-family: $font-family-headings;
+  font-weight: 700;
+}
+
+// Brand/Logo text
+.navbar-brand,
+.brand-name {
+  font-family: $font-family-headings;
+  font-weight: 700;
+}

@@ -132,7 +132,7 @@ const Portfolio = () => {
             </p>
             <a
               href="https://github.com/samclark1999?tab=repositories"
-              className="btn btn-primary"
+              className="btn btn-secondary"
             >
               <i className="bi bi-github me-2"></i>
               My Github Repositories

@@ -3,7 +3,7 @@
 
 .footer-section {
   position: relative;
-  background: $secondary-color;
+  background: $primary-color;
   color: $text-on-dark;
   overflow: hidden;
 
@@ -60,7 +60,7 @@
           left: 0;
           width: 30px;
           height: 2px;
-          background: $text-on-dark;
+          background: $accent-color;
         }
       }
 
@@ -71,7 +71,7 @@
         display: inline-block;
 
         &:hover {
-          color: $primary-color;
+          color: $accent-color;
           transform: translateX(5px);
         }
       }
@@ -136,7 +136,7 @@
       @include flex-center();
       border: none;
       background: $accent-color;
-      color: $text-dark;
+      color: #fff;
       @include transition();
       z-index: 1000;
 

@@ -32,6 +32,7 @@
       &:hover,
       &.active,
       &:focus {
+        color: $primary-color;
         text-decoration: underline;
         text-underline-offset: 6px;
       }

@@ -28,13 +28,26 @@ module.exports = (env, argv) => {
           use: {
             loader: "babel-loader",
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"],
+              presets: ["@babel/preset-env", ["@babel/preset-react", { runtime: "automatic" }]],
             },
           },
         },
         {
           test: /\.(sa|sc|c)ss$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "sass-loader",
+              options: {
+                api: "modern",
+                sassOptions: {
+                  quietDeps: true,
+                  loadPaths: [path.resolve(__dirname, "node_modules")],
+                },
+              },
+            },
+          ],
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/i,
@@ -90,6 +103,7 @@ module.exports = (env, argv) => {
       hot: true,
       historyApiFallback: true,
     },
+    performance: { hints: false },
     mode: isProduction ? "production" : "development",
   };
 };

@@ -1,10 +1,26 @@
+@use "sass:color";
+
 // Import Bootstrap with brand color overrides
-@use "~bootstrap/scss/bootstrap" with (
-  $primary: #562F00,
-  $secondary: #254F22,
-  $light: #FFFDF1,
-  $link-color: #562F00,
-  $link-hover-color: #FF9644
+@use "bootstrap/scss/bootstrap" with (
+  $primary: #2b1700,
+  $secondary: #254f22,
+  $warning: #ff9644,
+  $light: #fffdf1,
+  $link-color: #2b1700,
+  $link-hover-color: #ff9644,
+  $btn-padding-y: 8px,
+  $btn-padding-x: 16px,
+  $btn-font-size: 0.875rem,
+  $btn-border-radius: 10px,
+  $btn-border-radius-sm: 10px,
+  $btn-border-radius-lg: 10px,
+  $container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1200px,
+    xxl: 1200px,
+  )
 );
 
 // Import custom variables and mixins
@@ -43,17 +59,6 @@ section {
   scroll-margin-top: 80px; // Account for fixed navbar
 }
 
-// Custom button styles
-.btn-custom {
-  @include button-variant($accent-color, $accent-color);
-  @include transition();
-  border-radius: 25px;
-  padding: 12px 30px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 // Custom card styles
 .card-custom {
   border: none;
@@ -72,4 +77,63 @@ section {
   @include flex-center();
   color: white;
   text-align: center;
+}
+
+// ─── Button state overrides ───────────────────────────────────────────────────
+
+.btn-primary {
+  color: $text-on-dark;
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    color: $text-on-dark;
+    transform: translateY(-1px);
+  }
+}
+
+.btn-outline-primary {
+  color: $primary-color;
+  border-color: $primary-color;
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $text-on-dark;
+    transform: translateY(-1px);
+  }
+}
+
+.btn-secondary {
+  background-color: $accent-color;
+  border-color: $accent-color;
+  color: #fff;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: #fff;
+    transform: translateY(-1px);
+  }
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  border: 1px solid #dee2e6;
+  color: $text-dark;
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    color: #fff;
+    transform: translateY(-1px);
+  }
 }

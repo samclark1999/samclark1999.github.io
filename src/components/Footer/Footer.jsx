@@ -60,7 +60,7 @@ const Footer = () => {
             {/* Brand and Description */}
             <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
               <div className="footer-brand">
-                <h3 className="brand-name h2 fw-bold mb-3">Sam Clark</h3>
+                <h3 className="brand-name fw-bold mb-3">Sam Clark</h3>
                 <p className="brand-description mb-4">Full Stack Developer</p>
                 <div className="social-links d-flex gap-3">
                   {socialLinks.map((social, index) => (

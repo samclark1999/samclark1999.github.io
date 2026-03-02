@@ -24,19 +24,15 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="contact-section section-padding">
+    <section id="contact" className="contact-section">
       <div className="container">
         {/* Contact Items with Header Inside */}
         <div className="row justify-content-center">
           <div className="col-lg-7">
             <div className="contact-info">
               {/* Header Section - Inside contact info */}
-              <div className="contact-header text-center mb-4">
+              <div className="contact-header text-center">
                 <h2 className="section-title fw-bold mb-3">Get In Touch</h2>
-                <p className="section-subtitle lead text-muted">
-                  Let's connect! Feel free to reach out using any of the methods
-                  below.
-                </p>
               </div>
 
               <div className="contact-grid">

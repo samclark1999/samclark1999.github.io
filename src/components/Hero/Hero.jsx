@@ -1,5 +1,6 @@
 import React from "react";
 import "./Hero.scss";
+import headshotImg from "../../images/headshot.webp";
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
@@ -15,16 +16,15 @@ const Hero = () => {
   return (
     <section id="home" className="hero-section">
       <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-8 text-center">
+        <div className="row align-items-center gx-5">
+          {/* Left column - copy */}
+          <div className="col-lg-6">
             <div className="hero-content">
-              <h1 className="hero-title display-2 fw-bold mb-3 text-white">
-                Sam Clark
-              </h1>
-              <h2 className="hero-subtitle h3 mb-2 text-light">
+              <h1 className="hero-title text-start fw-bold mb-3">Sam Clark</h1>
+              <h2 className="hero-subtitle text-start h3 mb-2">
                 Full Stack Web Developer
               </h2>
-              <p className="current-job lead mb-5 text-light">
+              <p className="current-job text-start lead mb-4">
                 Currently working at{" "}
                 <a
                   href="https://www.level.agency/"
@@ -34,20 +34,20 @@ const Hero = () => {
                   Level Agency
                 </a>
               </p>
-              <p className="hero-description lead mb-5 text-light ">
+              <p className="hero-description text-start lead mb-5">
                 Crafting optimized websites that are fast, accessible and high
                 performing for clients.
               </p>
-              <div className="hero-buttons d-flex flex-column flex-sm-row gap-3 justify-content-center">
+              <div className="hero-buttons d-flex flex-column flex-sm-row gap-3">
                 <button
-                  className="btn btn-light btn-lg px-4 py-3"
+                  className="btn btn-primary"
                   onClick={() => scrollToSection("portfolio")}
                 >
                   <i className="bi bi-briefcase me-2"></i>
                   View My Work
                 </button>
                 <button
-                  className="btn btn-outline-light btn-lg px-4 py-3"
+                  className="btn btn-outline-primary"
                   onClick={() => scrollToSection("contact")}
                 >
                   <i className="bi bi-envelope me-2"></i>
@@ -56,14 +56,18 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Background elements */}
-      <div className="hero-bg-elements">
-        <div className="hero-circle hero-circle-1"></div>
-        <div className="hero-circle hero-circle-2"></div>
-        <div className="hero-circle hero-circle-3"></div>
+          {/* Right column - headshot */}
+          <div className="col-lg-6 mt-5 mt-lg-0">
+            <div className="hero-image-wrapper">
+              <img
+                src={headshotImg}
+                alt="Sam Clark"
+                className="hero-headshot"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

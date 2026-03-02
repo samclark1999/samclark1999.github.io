@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { CountUp } from "countup.js";
 import "./About.scss";
 import profilePic from "../../images/headshot.webp";
 import awardImg from "../../images/award.webp";
@@ -7,6 +8,26 @@ const About = () => {
   const [activeSkillFilter, setActiveSkillFilter] = useState("all");
   const [visibleSkillsCount, setVisibleSkillsCount] = useState(12);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const statsRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  const statsData = [
+    { id: "stat-0", end: 1000, suffix: "+", decimals: 0, label: "Tasks" },
+    {
+      id: "stat-1",
+      end: 3.5,
+      suffix: "+",
+      decimals: 1,
+      label: "Years Experience",
+    },
+    {
+      id: "stat-2",
+      end: 10,
+      suffix: "+",
+      decimals: 0,
+      label: "Client Retainers",
+    },
+  ];
 
   // Check screen size
   useEffect(() => {
@@ -24,6 +45,30 @@ const About = () => {
   useEffect(() => {
     setVisibleSkillsCount(12);
   }, [activeSkillFilter]);
+
+  // CountUp on scroll into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          statsData.forEach((stat) => {
+            const el = document.getElementById(stat.id);
+            if (el) {
+              new CountUp(el, stat.end, {
+                suffix: stat.suffix,
+                decimalPlaces: stat.decimals,
+                duration: 2.5,
+              }).start();
+            }
+          });
+        }
+      },
+      { threshold: 0.4 },
+    );
+    if (statsRef.current) observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const skillCategories = [
     { id: "all", name: "All Skills" },
@@ -101,34 +146,14 @@ const About = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 text-center mb-4">
-            <h2 className="section-title display-4 fw-bold mb-4">
-              About Me
-            </h2>
-            <p className="section-subtitle lead text-muted">
-              Get to know more about my background and expertise
-            </p>
+            <h2 className="section-title fw-bold mb-4">About Me</h2>
           </div>
         </div>
 
         <div className="row align-items-start gx-5">
-          <div className="col-lg-6 mb-4 mb-lg-0">
-            <div className="about-image-wrapper profile-pic-wrapper">
-              <img
-                src={profilePic}
-                alt="Sam Clark, Full Stack Web Developer"
-                className="profile-pic img-fluid"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                  e.target.parentElement.innerHTML =
-                    '<i class="bi bi-person-circle display-1 text-muted"></i>';
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="col-lg-6">
+          <div className="col-12">
             <div className="about-content">
-              <h3 className="h2 fw-bold mb-4">Experience at Level</h3>
+              <h3 className="fw-bold mb-4">Experience at Level</h3>
               <p className="mb-4">
                 At Level Agency, I’ve led multiple web redesigns and served as
                 the main developer for 30+ client retainers, helping teams
@@ -140,7 +165,7 @@ const About = () => {
                 glimpse into how I believe AI and web development can work
                 hand-in-hand to innovate faster and smarter.
               </p>
-              <p className="mb-4">
+              <p className="mb-5">
                 I’m passionate about blending creativity, strategy, and
                 technology to solve real problems on the web. If you’re curious
                 about how AI can fit into your dev workflow, or you just want to
@@ -148,29 +173,23 @@ const About = () => {
                 connect.
               </p>
 
-              <div className="about-stats row text-center mb-4">
-                <div className="col-4">
-                  <div className="stat-item">
-                    <h4 className="stat-number fw-bold text-primary">1000+</h4>
-                    <p className="stat-label text-muted mb-0">Tasks</p>
+              <div
+                ref={statsRef}
+                className="about-stats row text-center mb-4 mx-auto"
+              >
+                {statsData.map((stat) => (
+                  <div key={stat.id} className="col-md-4 col-12 mb-3 mb-md-0">
+                    <div className="stat-item">
+                      <h4
+                        id={stat.id}
+                        className="stat-number fw-bold text-primary"
+                      >
+                        0
+                      </h4>
+                      <p className="stat-label text-muted mb-0">{stat.label}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="col-4">
-                  <div className="stat-item">
-                    <h4 className="stat-number fw-bold text-primary">3.5+</h4>
-                    <p className="stat-label text-muted mb-0">
-                      Years Experience
-                    </p>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="stat-item">
-                    <h4 className="stat-number fw-bold text-primary">10+</h4>
-                    <p className="stat-label text-muted mb-0">
-                      Client Retainers
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -179,7 +198,7 @@ const About = () => {
         {/* Better Every Day Award Section */}
         <div className="row align-items-center gx-5 mt-5 pt-5">
           <div className="col-lg-6 mb-4 mb-lg-0">
-            <h2 className="fw-bold mb-4">Better Every Day Award</h2>
+            <h3 className="fw-bold mb-4">Better Every Day Award</h3>
             <p className="mb-4">
               This year at our company summit in January, I was awarded the
               "Better Every Day" award. This is a peer nominated award and is
@@ -191,7 +210,7 @@ const About = () => {
               href="https://www.linkedin.com/posts/samclark99_last-week-i-was-honored-to-receive-the-peer-nominated-activity-7425664438311247873-zlh_"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary"
+              className="btn btn-secondary"
             >
               See post on LinkedIn
             </a>
@@ -210,9 +229,7 @@ const About = () => {
         {/* Skills Section */}
         <div className="row mt-5 pt-5">
           <div className="col-12 text-center mb-4">
-            <h3 className="h2 fw-bold mb-3">
-              My Skills
-            </h3>
+            <h3 className="fw-bold mb-3">My Skills</h3>
             <p className="text-muted">Technologies and tools I work with</p>
           </div>
         </div>

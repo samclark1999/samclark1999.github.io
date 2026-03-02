@@ -3,12 +3,12 @@
 
 .about-section {
   background-color: $bg-light;
-  
+
   .section-title {
     position: relative;
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -10px;
       left: 50%;
@@ -19,7 +19,7 @@
       border-radius: 2px;
     }
   }
-  
+
   .about-image-wrapper {
     position: relative;
     border-radius: 20px;
@@ -42,21 +42,26 @@
   .profile-pic-wrapper {
     aspect-ratio: 1;
   }
-  
+
   .about-content {
     .about-stats {
+      max-width: 992px;
+      margin-left: auto;
+      margin-right: auto;
+
       .stat-item {
         padding: 1.5rem;
         background: white;
         border-radius: 15px;
+        border-top: 3px solid $accent-color;
         box-shadow: $box-shadow;
         @include transition();
-        
+
         .stat-number {
           font-size: 2rem;
           margin-bottom: 0.5rem;
         }
-        
+
         .stat-label {
           font-size: 0.9rem;
           font-weight: 500;
@@ -64,44 +69,40 @@
       }
     }
   }
-  
+
   .skills-filters {
     .skill-filter-btn {
       background: white;
-      border: 2px solid #e9ecef;
+      border: 2px solid $text-light;
       color: $text-dark;
       padding: 0.5rem 1rem;
       border-radius: 25px;
       font-weight: 500;
       font-size: 0.9rem;
       @include transition();
-      
-      &:hover {
-        border-color: $primary-color;
-        color: $primary-color;
+
+      &:hover,
+      &.active,
+      &:focus {
+        border-color: $accent-color;
+        background: $accent-color;
+        color: #fff;
         transform: translateY(-2px);
         box-shadow: $box-shadow;
       }
-      
-      &.active {
-        background: $primary-color;
-        border-color: $primary-color;
-        color: white;
-        box-shadow: $box-shadow-lg;
-      }
     }
   }
-  
+
   .skill-item {
     background: white;
     border-radius: 15px;
     box-shadow: $box-shadow;
     @include transition();
     height: 100%;
-    
+
     .skill-header {
       border: none;
-      
+
       .skill-info {
         .skill-name {
           font-weight: 600;
@@ -118,12 +119,12 @@
   .about-section {
     .about-stats {
       margin-bottom: 2rem;
-      
+
       .stat-item {
         margin-bottom: 1rem;
       }
     }
-    
+
     .skills-filters {
       .skill-filter-btn {
         font-size: 0.8rem;
@@ -138,7 +139,7 @@
     .section-title {
       font-size: 2.5rem;
     }
-    
+
     .about-content {
       .about-stats {
         .stat-number {
@@ -146,7 +147,7 @@
         }
       }
     }
-    
+
     .skills-filters {
       .skill-filter-btn {
         display: inline-block;
@@ -154,10 +155,10 @@
         margin: 0.25rem;
       }
     }
-    
+
     .skill-item {
       margin-bottom: 1rem;
-      
+
       .skill-header {
         padding: 1rem;
       }

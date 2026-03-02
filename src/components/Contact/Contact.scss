@@ -8,6 +8,8 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  padding-top: 8rem;
+  padding-bottom: 1.5rem;
 
   &::after {
     content: "";
@@ -27,7 +29,7 @@
 
   .contact-info {
     background: rgba(255, 253, 241, 0.97);
-    padding: 3rem;
+    padding: 1.5rem;
     border-radius: 20px;
     box-shadow: $box-shadow-lg;
 

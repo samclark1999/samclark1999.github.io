@@ -26,7 +26,7 @@
   }
 
   .contact-info {
-    background: rgba(255, 255, 249, 0.95);
+    background: rgba(255, 253, 241, 0.97);
     padding: 3rem;
     border-radius: 20px;
     box-shadow: $box-shadow-lg;
@@ -43,7 +43,7 @@
           transform: translateX(-50%);
           width: 60px;
           height: 4px;
-          background: $text-dark;
+          background: $accent-color;
           border-radius: 2px;
         }
       }

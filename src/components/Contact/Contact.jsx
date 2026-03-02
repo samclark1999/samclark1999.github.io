@@ -32,9 +32,7 @@ const Contact = () => {
             <div className="contact-info">
               {/* Header Section - Inside contact info */}
               <div className="contact-header text-center mb-4">
-                <h2 className="section-title display-4 fw-bold mb-3">
-                  Get In Touch
-                </h2>
+                <h2 className="section-title fw-bold mb-3">Get In Touch</h2>
                 <p className="section-subtitle lead text-muted">
                   Let's connect! Feel free to reach out using any of the methods
                   below.

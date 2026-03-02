@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./About.scss";
-import profilePic from "../../images/profile-pic.JPG";
+import profilePic from "../../images/headshot.webp";
+import awardImg from "../../images/award.webp";
 
 const About = () => {
-  const [activeSkillFilter, setActiveSkillFilter] = useState('all');
+  const [activeSkillFilter, setActiveSkillFilter] = useState("all");
   const [visibleSkillsCount, setVisibleSkillsCount] = useState(12);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -14,9 +15,9 @@ const About = () => {
     };
 
     checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    
-    return () => window.removeEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   // Reset visible skills when filter changes
@@ -25,15 +26,15 @@ const About = () => {
   }, [activeSkillFilter]);
 
   const skillCategories = [
-    { id: 'all', name: 'All Skills' },
-    { id: 'frontend', name: 'Frontend' },
-    { id: 'backend', name: 'Backend' },
-    { id: 'database', name: 'Database' },
-    { id: 'cms', name: 'CMS' },
-    { id: 'design', name: 'Design' },
-    { id: 'devops', name: 'DevOps' },
-    { id: 'project-management', name: 'Project Management' },
-    { id: 'analytics', name: 'Analytics & SEO' }
+    { id: "all", name: "All Skills" },
+    { id: "frontend", name: "Frontend" },
+    { id: "backend", name: "Backend" },
+    { id: "database", name: "Database" },
+    { id: "cms", name: "CMS" },
+    { id: "design", name: "Design" },
+    { id: "devops", name: "DevOps" },
+    { id: "project-management", name: "Project Management" },
+    { id: "analytics", name: "Analytics & SEO" },
   ];
 
   const skills = [
@@ -45,52 +46,54 @@ const About = () => {
     { name: "jQuery", icon: "bi-currency-dollar", category: "frontend" },
     { name: "A11y", icon: "bi-eye-fill", category: "frontend" },
     { name: "Technical SEO", icon: "bi-search", category: "frontend" },
-    
+
     // Backend
     { name: "Node.js", icon: "bi-server", category: "backend" },
     { name: "Python", icon: "bi-diamond-fill", category: "backend" },
     { name: "PHP", icon: "bi-code-square", category: "backend" },
     { name: "LLMs", icon: "bi-robot", category: "backend" },
-    
+
     // Database
     { name: "MongoDB", icon: "bi-cloud", category: "database" },
     { name: "MySQL", icon: "bi-table", category: "database" },
-    
+
     // CMS
     { name: "WordPress", icon: "bi-wordpress", category: "cms" },
     { name: "HubSpot", icon: "bi-gear-fill", category: "cms" },
-    
+
     // Design
     { name: "Adobe Suite", icon: "bi-image-fill", category: "design" },
     { name: "Figma", icon: "bi-vector-pen", category: "design" },
-    
+
     // DevOps
     { name: "Docker", icon: "bi-box-seam", category: "devops" },
     { name: "DevOps", icon: "bi-diagram-3", category: "devops" },
-    
+
     // Project Management
     { name: "Google Suite", icon: "bi-google", category: "project-management" },
     { name: "Slack", icon: "bi-chat-dots", category: "project-management" },
     { name: "Asana", icon: "bi-kanban", category: "project-management" },
-    
+
     // Analytics & SEO
     { name: "GTM", icon: "bi-tags", category: "analytics" },
-    { name: "GA4", icon: "bi-graph-up", category: "analytics" }
+    { name: "GA4", icon: "bi-graph-up", category: "analytics" },
   ];
 
-  const filteredSkills = activeSkillFilter === 'all' 
-    ? skills 
-    : skills.filter(skill => skill.category === activeSkillFilter);
+  const filteredSkills =
+    activeSkillFilter === "all"
+      ? skills
+      : skills.filter((skill) => skill.category === activeSkillFilter);
 
   // For mobile screens, limit visible skills
-  const displayedSkills = isSmallScreen 
+  const displayedSkills = isSmallScreen
     ? filteredSkills.slice(0, visibleSkillsCount)
     : filteredSkills;
 
-  const hasMoreSkills = isSmallScreen && visibleSkillsCount < filteredSkills.length;
+  const hasMoreSkills =
+    isSmallScreen && visibleSkillsCount < filteredSkills.length;
 
   const loadMoreSkills = () => {
-    setVisibleSkillsCount(prev => prev + 4);
+    setVisibleSkillsCount((prev) => prev + 4);
   };
 
   return (
@@ -99,7 +102,7 @@ const About = () => {
         <div className="row">
           <div className="col-12 text-center mb-4">
             <h2 className="section-title display-4 fw-bold mb-4">
-              About <span className="text-primary">Me</span>
+              About Me
             </h2>
             <p className="section-subtitle lead text-muted">
               Get to know more about my background and expertise
@@ -109,14 +112,15 @@ const About = () => {
 
         <div className="row align-items-start gx-5">
           <div className="col-lg-6 mb-4 mb-lg-0">
-            <div className="about-image-wrapper">
+            <div className="about-image-wrapper profile-pic-wrapper">
               <img
                 src={profilePic}
                 alt="Sam Clark, Full Stack Web Developer"
                 className="profile-pic img-fluid"
                 onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<i class="bi bi-person-circle display-1 text-muted"></i>';
+                  e.target.style.display = "none";
+                  e.target.parentElement.innerHTML =
+                    '<i class="bi bi-person-circle display-1 text-muted"></i>';
                 }}
               />
             </div>
@@ -126,14 +130,22 @@ const About = () => {
             <div className="about-content">
               <h3 className="h2 fw-bold mb-4">Experience at Level</h3>
               <p className="mb-4">
-                At Level Agency, I’ve led multiple web redesigns and served as the main developer for 30+ client retainers, helping teams launch fast, clean, and accessible sites. Over the years, I’ve completed 1,000+ full-stack dev tasks across everything from React builds and custom WordPress plugins to DevOps and AI automation. One of my favorite projects involved training AI agents on internal codebases to speed up developer workflows—a glimpse into how I believe AI and web development can work hand-in-hand to innovate faster and smarter.
+                At Level Agency, I’ve led multiple web redesigns and served as
+                the main developer for 30+ client retainers, helping teams
+                launch fast, clean, and accessible sites. Over the years, I’ve
+                completed 1,000+ full-stack dev tasks across everything from
+                React builds and custom WordPress plugins to DevOps and AI
+                automation. One of my favorite projects involved training AI
+                agents on internal codebases to speed up developer workflows—a
+                glimpse into how I believe AI and web development can work
+                hand-in-hand to innovate faster and smarter.
               </p>
               <p className="mb-4">
-                I’m passionate about blending creativity,
-                strategy, and technology to solve real problems on the web. If
-                you’re curious about how AI can fit into your dev workflow, or
-                you just want to geek out over site performance and clean code,
-                I’d love to connect.
+                I’m passionate about blending creativity, strategy, and
+                technology to solve real problems on the web. If you’re curious
+                about how AI can fit into your dev workflow, or you just want to
+                geek out over site performance and clean code, I’d love to
+                connect.
               </p>
 
               <div className="about-stats row text-center mb-4">
@@ -164,11 +176,42 @@ const About = () => {
           </div>
         </div>
 
+        {/* Better Every Day Award Section */}
+        <div className="row align-items-center gx-5 mt-5 pt-5">
+          <div className="col-lg-6 mb-4 mb-lg-0">
+            <h2 className="fw-bold mb-4">Better Every Day Award</h2>
+            <p className="mb-4">
+              This year at our company summit in January, I was awarded the
+              "Better Every Day" award. This is a peer nominated award and is
+              one of my current organization's core values. It was an honor to
+              be awarded by the people I work with and that they recognize my
+              work and improvement every day.
+            </p>
+            <a
+              href="https://www.linkedin.com/posts/samclark99_last-week-i-was-honored-to-receive-the-peer-nominated-activity-7425664438311247873-zlh_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              See post on LinkedIn
+            </a>
+          </div>
+          <div className="col-lg-6">
+            <div className="about-image-wrapper">
+              <img
+                src={awardImg}
+                alt="Better Every Day Award"
+                className="img-fluid award-img"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Skills Section */}
         <div className="row mt-5 pt-5">
           <div className="col-12 text-center mb-4">
             <h3 className="h2 fw-bold mb-3">
-              My <span className="text-primary">Skills</span>
+              My Skills
             </h3>
             <p className="text-muted">Technologies and tools I work with</p>
           </div>
@@ -178,10 +221,10 @@ const About = () => {
         <div className="row mb-4">
           <div className="col-12">
             <div className="skills-filters text-center">
-              {skillCategories.map(category => (
+              {skillCategories.map((category) => (
                 <button
                   key={category.id}
-                  className={`btn skill-filter-btn me-2 mb-2 ${activeSkillFilter === category.id ? 'active' : ''}`}
+                  className={`btn skill-filter-btn me-2 mb-2 ${activeSkillFilter === category.id ? "active" : ""}`}
                   onClick={() => setActiveSkillFilter(category.id)}
                 >
                   {category.name}
@@ -200,7 +243,9 @@ const About = () => {
                   <i className={`${skill.icon} me-3 text-primary fs-4`}></i>
                   <div className="skill-info flex-grow-1">
                     <h4 className="skill-name mb-0 fw-bold">{skill.name}</h4>
-                    <small className="text-capitalize">{skill.category.replace('-', ' ')}</small>
+                    <small className="text-capitalize">
+                      {skill.category.replace("-", " ")}
+                    </small>
                   </div>
                 </div>
               </div>
@@ -212,11 +257,12 @@ const About = () => {
         {hasMoreSkills && (
           <div className="row mt-3">
             <div className="col-12 text-center">
-              <button 
+              <button
                 className="btn btn-outline-primary"
                 onClick={loadMoreSkills}
               >
-                Load {Math.min(4, filteredSkills.length - visibleSkillsCount)} More Skills
+                Load {Math.min(4, filteredSkills.length - visibleSkillsCount)}{" "}
+                More Skills
               </button>
             </div>
           </div>
@@ -226,7 +272,7 @@ const About = () => {
         <div className="row mt-4">
           <div className="col-12 text-center">
             <p className="text-muted">
-              {activeSkillFilter === 'all' ? (
+              {activeSkillFilter === "all" ? (
                 isSmallScreen ? (
                   `Showing ${displayedSkills.length} of ${filteredSkills.length} skills`
                 ) : (
@@ -234,8 +280,21 @@ const About = () => {
                 )
               ) : (
                 <>
-                  Showing {isSmallScreen ? displayedSkills.length : filteredSkills.length} 
-                  {isSmallScreen && filteredSkills.length > displayedSkills.length && ` of ${filteredSkills.length}`} skills in <strong>{skillCategories.find(cat => cat.id === activeSkillFilter)?.name}</strong>
+                  Showing{" "}
+                  {isSmallScreen
+                    ? displayedSkills.length
+                    : filteredSkills.length}
+                  {isSmallScreen &&
+                    filteredSkills.length > displayedSkills.length &&
+                    ` of ${filteredSkills.length}`}{" "}
+                  skills in{" "}
+                  <strong>
+                    {
+                      skillCategories.find(
+                        (cat) => cat.id === activeSkillFilter,
+                      )?.name
+                    }
+                  </strong>
                 </>
               )}
             </p>

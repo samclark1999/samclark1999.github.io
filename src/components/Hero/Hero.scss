@@ -4,8 +4,7 @@
 .hero-section {
   position: relative;
   min-height: 100vh;
-  background: url("../../images/hero.webp") no-repeat center center/cover;
-  background-color: #000;
+  background: $secondary-color;
   @include flex-center();
   overflow: hidden;
   padding-top: 80px; // Account for fixed navbar

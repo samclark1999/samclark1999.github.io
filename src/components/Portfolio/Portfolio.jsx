@@ -72,7 +72,7 @@ const Portfolio = () => {
         <div className="row">
           <div className="col-12 text-center mb-5">
             <h2 className="section-title display-4 fw-bold mb-3">
-              My <span className="text-primary">Portfolio</span>
+              My Portfolio
             </h2>
             <p className="section-subtitle lead text-muted">
               Take a look at some of my recent work and projects

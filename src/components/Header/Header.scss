@@ -4,7 +4,7 @@
 .navbar-custom {
   @include transition(all, 0.3s, ease);
   padding: 1rem 0;
-  background-color: #fff;
+  background-color: $bg-light;
   padding: 0.5rem 0;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 
@@ -68,7 +68,7 @@
   @include media-breakpoint-down(lg) {
     .navbar-custom {
       .navbar-nav {
-        background-color: rgb(255, 255, 255);
+        background-color: $bg-light;
         border-radius: 10px;
         padding: 1rem;
         margin-top: 1rem;

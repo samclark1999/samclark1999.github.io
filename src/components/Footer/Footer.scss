@@ -3,8 +3,8 @@
 
 .footer-section {
   position: relative;
-  background: #000;
-  color: white;
+  background: $secondary-color;
+  color: $text-on-dark;
   overflow: hidden;
 
   .footer-main {
@@ -26,8 +26,8 @@
         .social-link {
           width: 45px;
           height: 45px;
-          background: rgba(white, 0.1);
-          color: white;
+          background: rgba(white, 0.15);
+          color: $text-on-dark;
           border-radius: 50%;
           @include flex-center();
           text-decoration: none;
@@ -35,8 +35,9 @@
           border: 2px solid transparent;
 
           &:hover {
-            background: $primary-color;
-            border-color: $primary-color;
+            background: $accent-color;
+            border-color: $accent-color;
+            color: $text-dark;
             transform: translateY(-3px);
           }
 
@@ -49,7 +50,7 @@
 
     .footer-links {
       .footer-title {
-        color: white;
+        color: $text-on-dark;
         position: relative;
 
         &::after {
@@ -59,7 +60,7 @@
           left: 0;
           width: 30px;
           height: 2px;
-          background: $primary-color;
+          background: $text-on-dark;
         }
       }
 
@@ -78,7 +79,7 @@
 
     .footer-contact {
       .footer-title {
-        color: white;
+        color: $text-on-dark;
         position: relative;
 
         &::after {
@@ -88,7 +89,7 @@
           left: 0;
           width: 30px;
           height: 2px;
-          background: $primary-color;
+          background: $accent-color;
         }
       }
 
@@ -108,7 +109,7 @@
           @include transition();
 
           &:hover {
-            color: $primary-color;
+            color: $accent-color;
           }
         }
       }
@@ -134,13 +135,13 @@
       border-radius: 10px;
       @include flex-center();
       border: none;
-      background: $primary-color;
-      color: white;
+      background: $accent-color;
+      color: $text-dark;
       @include transition();
       z-index: 1000;
 
       &:hover {
-        background: $accent-color;
+        background: $accent-light;
         transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba($primary-color, 0.3);
       }

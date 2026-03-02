@@ -1,5 +1,11 @@
-// Import Bootstrap
-@use "~bootstrap/scss/bootstrap";
+// Import Bootstrap with brand color overrides
+@use "~bootstrap/scss/bootstrap" with (
+  $primary: #562F00,
+  $secondary: #254F22,
+  $light: #FFFDF1,
+  $link-color: #562F00,
+  $link-hover-color: #FF9644
+);
 
 // Import custom variables and mixins
 @use "variables" as *;

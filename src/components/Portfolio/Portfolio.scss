@@ -1,112 +1,54 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-.portfolio-section {
-  background-color: #fffdf1;
+.portfolio-intro {
+  color: var(--text-muted);
+  max-width: 60ch;
+  margin-top: $space-3;
+}
 
-  .section-title {
-    position: relative;
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-6;
+}
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: $accent-color;
-      border-radius: 2px;
-    }
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: $space-6;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-sm);
+  transition: transform $duration-base $ease-standard, box-shadow $duration-base $ease-standard;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
   }
 
-  .portfolio-grid {
-    .portfolio-item {
-      border: none;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-      @include transition();
-
-      &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-
-        .portfolio-title {
-          color: $primary-color;
-        }
-      }
-
-      .portfolio-content {
-        .portfolio-title {
-          color: $text-dark;
-          font-size: 1.25rem !important;
-          @include transition();
-        }
-
-        .portfolio-description {
-          font-size: 0.9rem;
-          line-height: 1.6;
-        }
-
-        .portfolio-technologies {
-          .badge {
-            font-size: 0.75rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: 15px;
-            font-weight: 500;
-          }
-        }
-
-        .portfolio-links {
-          .btn {
-            font-size: 0.85rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            @include transition();
-          }
-        }
-      }
-    }
+  h3 {
+    margin-bottom: $space-2;
   }
 }
 
-// Animation for portfolio items
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.project-card__description {
+  color: var(--text-muted);
+  margin-bottom: $space-4;
+  flex-grow: 1;
 }
 
-.portfolio-item {
-  animation: fadeInUp 0.6s ease-out;
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: $space-2;
+  margin-bottom: $space-4;
 }
 
-// Responsive design
-
-@include media-breakpoint-down(md) {
-  .portfolio-section {
-    .section-title {
-      font-size: 2.5rem;
-    }
-
-    .portfolio-grid {
-      .portfolio-item {
-        margin-bottom: 2rem;
-
-        .portfolio-content {
-          .portfolio-links {
-            .btn {
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
-  }
+.portfolio-more {
+  display: flex;
+  justify-content: center;
+  margin-top: $space-8;
 }

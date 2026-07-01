@@ -1,139 +1,235 @@
 @use "sass:color";
-
-// Import Bootstrap with brand color overrides
-@use "bootstrap/scss/bootstrap" with (
-  $primary: #2b1700,
-  $secondary: #254f22,
-  $warning: #ff9644,
-  $light: #fffdf1,
-  $link-color: #2b1700,
-  $link-hover-color: #ff9644,
-  $btn-padding-y: 8px,
-  $btn-padding-x: 16px,
-  $btn-font-size: 0.875rem,
-  $btn-border-radius: 10px,
-  $btn-border-radius-sm: 10px,
-  $btn-border-radius-lg: 10px,
-  $container-max-widths: (
-    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: 1200px,
-    xxl: 1200px,
-  )
-);
-
-// Import custom variables and mixins
+@use "reset";
 @use "variables" as *;
 @use "mixins" as *;
 @use "typography";
 
-// Global styles
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// Self-hosted font weights, latin subset only — trim further, or import the
+// unprefixed file (e.g. "manrope/500.css") to add other unicode ranges.
+@import "@fontsource/bricolage-grotesque/latin-700.css";
+@import "@fontsource/bricolage-grotesque/latin-800.css";
+@import "@fontsource/manrope/latin-400.css";
+@import "@fontsource/manrope/latin-500.css";
+@import "@fontsource/manrope/latin-700.css";
+@import "@fontsource/jetbrains-mono/latin-500.css";
 
-html {
-  scroll-behavior: smooth;
+:root {
+  // Default surface tokens (cream context). Sections override these —
+  // components should read var(--surface)/var(--accent)/etc, never the
+  // ink/cream $variables directly, so a card works on either background.
+  --surface: #{$color-cream-raised};
+  --border: #{$color-cream-border};
+  --text-muted: #{$color-text-on-cream-muted};
+  --accent: #{$color-coral-deep};
+  --accent-contrast: #{$color-cream};
+  --shadow-sm: #{$shadow-sm-on-cream};
+  --shadow-md: #{$shadow-md-on-cream};
 }
 
 body {
-  font-family: $font-family-base;
-  line-height: $line-height-base;
-  color: $text-dark;
+  background: $color-cream;
+  color: $color-text-on-cream;
 }
 
-// Custom utilities
-.section-padding {
-  @include section-padding();
+// ─── Section surfaces ───────────────────────────────────────────────────
+// Wrap each page section in .section plus one context modifier. Everything
+// inside (cards, links, buttons) picks up the right colors automatically.
+
+.section {
+  padding-block: $space-9;
+  overflow: clip;
 }
 
-.text-gradient {
-  @include text-gradient($primary-color, $accent-color);
+.section--ink {
+  background: $color-ink;
+  color: $color-text-on-ink;
+  --surface: #{$color-ink-raised};
+  --border: #{$color-ink-border};
+  --text-muted: #{$color-text-on-ink-muted};
+  --accent: #{$color-coral};
+  --accent-contrast: #{$color-coral-text-on};
+  --shadow-sm: #{$shadow-sm-on-ink};
+  --shadow-md: #{$shadow-md-on-ink};
 }
 
-// Smooth scrolling for anchor links
-section {
-  scroll-margin-top: 80px; // Account for fixed navbar
+.section--cream {
+  background: $color-cream;
+  color: $color-text-on-cream;
+  --surface: #{$color-cream-raised};
+  --border: #{$color-cream-border};
+  --text-muted: #{$color-text-on-cream-muted};
+  --accent: #{$color-coral-deep};
+  --accent-contrast: #{$color-cream};
+  --shadow-sm: #{$shadow-sm-on-cream};
+  --shadow-md: #{$shadow-md-on-cream};
 }
 
-// Custom card styles
-.card-custom {
-  border: none;
-  box-shadow: $box-shadow;
-  @include transition();
+.container {
+  @include container;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.section-heading {
+  margin-bottom: $space-7;
+}
+
+.section-heading__eyebrow {
+  color: var(--accent);
+  margin-bottom: $space-3;
+}
+
+// ─── Buttons ─────────────────────────────────────────────────────────────
+// Primary/secondary cover main calls to action. Tertiary actions should use
+// .link-arrow instead of a third button variant.
+
+.btn {
+  @include button-reset;
+  @include focus-ring;
+  @include transition(transform, $duration-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: 0.8rem 1.6rem;
+  border-radius: $radius-md;
+  font-weight: $font-weight-bold;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: $color-coral;
+  color: $color-coral-text-on;
+  transition: transform $duration-fast $ease-standard, background-color $duration-fast $ease-standard;
 
   &:hover {
-    box-shadow: $box-shadow-lg;
-    transform: translateY(-5px);
+    background: color.adjust($color-coral, $lightness: -8%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }
 
-// Hero section styles
-.hero-section {
-  min-height: 100vh;
-  @include flex-center();
-  color: white;
-  text-align: center;
-}
-
-// ─── Button state overrides ───────────────────────────────────────────────────
-
-.btn-primary {
-  color: $text-on-dark;
-
-  &:hover,
-  &:active,
-  &.active {
-    background-color: $accent-color;
-    border-color: $accent-color;
-    color: $text-on-dark;
-    transform: translateY(-1px);
-  }
-}
-
-.btn-outline-primary {
-  color: $primary-color;
-  border-color: $primary-color;
-
-  &:hover,
-  &:active,
-  &.active {
-    background-color: $primary-color;
-    border-color: $primary-color;
-    color: $text-on-dark;
-    transform: translateY(-1px);
-  }
-}
-
-.btn-secondary {
-  background-color: $accent-color;
-  border-color: $accent-color;
-  color: #fff;
-
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: $primary-color;
-    border-color: $primary-color;
-    color: #fff;
-    transform: translateY(-1px);
-  }
-}
-
-.btn-secondary-outline {
+.btn--secondary {
   background: transparent;
-  border: 1px solid #dee2e6;
-  color: $text-dark;
+  color: currentColor;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+  transition: transform $duration-fast $ease-standard, box-shadow $duration-fast $ease-standard,
+    background-color $duration-fast $ease-standard;
 
-  &:hover,
-  &:active,
-  &.active {
-    background-color: $accent-color;
-    border-color: $accent-color;
-    color: #fff;
-    transform: translateY(-1px);
+  &:hover {
+    box-shadow: inset 0 0 0 1.5px var(--accent);
+    background: color.adjust($color-coral, $alpha: -0.9);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Lower-emphasis action: weighted text, growing underline, nudging arrow.
+// No button chrome — use this instead of adding a third button style.
+.link-arrow {
+  @include focus-ring;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-weight: $font-weight-bold;
+  font-size: 0.9375rem;
+  color: var(--accent);
+  padding-block: $space-1;
+}
+
+.link-arrow__label {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0.2);
+    transform-origin: left;
+    transition: transform $duration-base $ease-standard;
+  }
+}
+
+.link-arrow__arrow {
+  transition: transform $duration-base $ease-standard;
+}
+
+.link-arrow:hover .link-arrow__label::after {
+  transform: scaleX(1);
+}
+
+.link-arrow:hover .link-arrow__arrow {
+  transform: translateX(4px);
+}
+
+// ─── Tags / chips ────────────────────────────────────────────────────────
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: $font-weight-medium;
+  padding: $space-1 $space-3;
+  border-radius: $radius-pill;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+// ─── Scroll reveal ───────────────────────────────────────────────────────
+// Paired with the useReveal hook: elements fade/slide in once, then stay.
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity $duration-slow $ease-standard, transform $duration-slow $ease-standard;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Account for the fixed header when jumping to an anchor.
+section {
+  scroll-margin-top: $header-height;
+}
+
+.skip-link {
+  @include visually-hidden;
+
+  &:focus-visible {
+    position: fixed;
+    top: $space-3;
+    left: $space-3;
+    width: auto;
+    height: auto;
+    clip: auto;
+    padding: $space-3 $space-5;
+    background: $color-coral;
+    color: $color-coral-text-on;
+    border-radius: $radius-md;
+    font-weight: $font-weight-bold;
+    z-index: $z-overlay;
   }
 }

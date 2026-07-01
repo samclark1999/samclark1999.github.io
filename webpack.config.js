@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
@@ -35,7 +37,7 @@ module.exports = (env, argv) => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            "style-loader",
+            isProduction ? MiniCssExtractPlugin.loader : "style-loader",
             "css-loader",
             {
               loader: "sass-loader",
@@ -60,6 +62,13 @@ module.exports = (env, argv) => {
             filename: "images/[hash][ext][query]",
           },
         },
+        {
+          test: /\.(woff2?|ttf)$/i,
+          type: "asset/resource",
+          generator: {
+            filename: "fonts/[hash][ext][query]",
+          },
+        },
       ],
     },
     resolve: {
@@ -69,6 +78,9 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: "./public/index.html",
       }),
+      ...(isProduction
+        ? [new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" })]
+        : []),
       new CopyWebpackPlugin({
         patterns: [
           { from: "favicon.ico", to: "favicon.ico" },
@@ -84,6 +96,8 @@ module.exports = (env, argv) => {
             to: "web-app-manifest-512x512.png",
           },
           { from: "site.webmanifest", to: "site.webmanifest" },
+          { from: "robots.txt", to: "robots.txt" },
+          { from: "sitemap.xml", to: "sitemap.xml" },
         ],
       }),
     ],
@@ -105,5 +119,8 @@ module.exports = (env, argv) => {
     },
     performance: { hints: false },
     mode: isProduction ? "production" : "development",
+    optimization: {
+      minimizer: ["...", new CssMinimizerPlugin()],
+    },
   };
 };

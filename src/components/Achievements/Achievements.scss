@@ -1,0 +1,75 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.achievements-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-6;
+}
+
+.achievement-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-5;
+  padding: $space-6;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-sm);
+  transition: transform $duration-base $ease-standard, box-shadow $duration-base $ease-standard;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    align-items: center;
+    gap: $space-6;
+  }
+}
+
+.achievement-card__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color-coral, 0.14);
+  color: var(--accent);
+}
+
+.achievement-card__image {
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: $radius-md;
+
+  @include media-breakpoint-up(md) {
+    width: 220px;
+  }
+}
+
+.achievement-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.achievement-card__date {
+  color: var(--accent);
+  margin-bottom: $space-2;
+}
+
+.achievement-card__body h3 {
+  margin-bottom: $space-2;
+}
+
+.achievement-card__body p:not(.achievement-card__date) {
+  color: var(--text-muted);
+  margin-bottom: $space-3;
+}

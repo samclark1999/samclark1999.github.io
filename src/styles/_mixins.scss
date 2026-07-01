@@ -1,15 +1,9 @@
-@use "sass:color";
 @use "sass:map";
 @use "variables" as *;
 
-// Responsive mixins
 @mixin media-breakpoint-up($breakpoint) {
-  @if $breakpoint == xs {
+  @media (min-width: map.get($grid-breakpoints, $breakpoint)) {
     @content;
-  } @else {
-    @media (min-width: map.get($grid-breakpoints, $breakpoint)) {
-      @content;
-    }
   }
 }
 
@@ -19,20 +13,11 @@
   }
 }
 
-// Button mixins
-@mixin button-variant($background, $border, $hover-background: color.adjust($background, $lightness: -7.5%), $hover-border: color.adjust($border, $lightness: -10%)) {
-  background-color: $background;
-  border-color: $border;
-  
-  &:hover {
-    background-color: $hover-background;
-    border-color: $hover-border;
-  }
-}
-
-// Utility mixins
-@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
-  transition: $property $duration $timing;
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-inline: auto;
+  padding-inline: $container-padding;
 }
 
 @mixin flex-center {
@@ -41,14 +26,41 @@
   justify-content: center;
 }
 
-@mixin text-gradient($start-color, $end-color) {
-  background: linear-gradient(45deg, $start-color, $end-color);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@mixin transition($property: all, $duration: $duration-base, $timing: $ease-standard) {
+  transition: $property $duration $timing;
 }
 
-// Section padding mixin
-@mixin section-padding($padding: $section-padding) {
-  padding: $padding;
+// Keyboard-only focus ring; mouse/touch users never see it.
+@mixin focus-ring($color: $color-coral) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+    border-radius: $radius-sm;
+  }
+}
+
+@mixin button-reset {
+  appearance: none;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  // <button> defaults to min-width: auto, which is padding-driven and can
+  // silently override a smaller explicit width — reset it so width always wins.
+  min-width: 0;
+}
+
+// Hides content visually while keeping it in the accessibility tree.
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

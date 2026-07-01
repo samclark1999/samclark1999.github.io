@@ -1,79 +1,46 @@
-import React from "react";
+import Icon from "../Icon/Icon";
+import { profile } from "../../data/profile";
+import { getMailtoHref, getEmailAddress } from "../../utils/email";
 import "./Contact.scss";
 
 const Contact = () => {
-  const contactInfo = [
-    {
-      icon: "bi-envelope",
-      title: "Email",
-      description: "samclarkwork99@gmail.com",
-      link: "mailto:samclarkwork99@gmail.com",
-    },
-    {
-      icon: "bi-linkedin",
-      title: "LinkedIn",
-      description: "Connect with me",
-      link: "https://www.linkedin.com/in/samclark99/",
-    },
-    {
-      icon: "bi-github",
-      title: "GitHub",
-      description: "View my repositories",
-      link: "https://github.com/samclark1999?tab=repositories",
-    },
-  ];
-
   return (
-    <section id="contact" className="contact-section">
-      <div className="container">
-        {/* Contact Items with Header Inside */}
-        <div className="row justify-content-center">
-          <div className="col-lg-7">
-            <div className="contact-info">
-              {/* Header Section - Inside contact info */}
-              <div className="contact-header text-center">
-                <h2 className="section-title fw-bold mb-3">Get In Touch</h2>
-              </div>
-
-              <div className="contact-grid">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="contact-item">
-                    {info.link ? (
-                      <a
-                        href={info.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-link"
-                      >
-                        <div className="contact-icon">
-                          <i className={`${info.icon} fs-4`}></i>
-                        </div>
-                        <div className="contact-content">
-                          <h3 className="contact-title">{info.title}</h3>
-                          <p className="contact-description">
-                            {info.description}
-                          </p>
-                        </div>
-                      </a>
-                    ) : (
-                      <div className="contact-link">
-                        <div className="contact-icon">
-                          <i className={`${info.icon} fs-4`}></i>
-                        </div>
-                        <div className="contact-content">
-                          <h3 className="contact-title">{info.title}</h3>
-                          <p className="contact-description">
-                            {info.description}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+    <section id="contact" className="contact section section--ink">
+      <div className="container contact-inner">
+        <div className="section-heading">
+          <p className="eyebrow section-heading__eyebrow">Get In Touch</p>
+          <h2>Let's build something</h2>
+          <p className="contact-intro">Reach out however's easiest for you — email, LinkedIn, or GitHub.</p>
         </div>
+
+        <ul className="contact-grid">
+          {profile.socials.map((social) => {
+            const isEmail = social.name === "Email";
+            const href = isEmail ? getMailtoHref() : social.href;
+            const description = isEmail ? getEmailAddress() : social.description;
+
+            return (
+              <li key={social.name}>
+                {/* mailto: isn't a document to open in a new tab — target="_blank" on it
+                    just leaves a blank tab behind in most browsers. */}
+                <a
+                  href={href}
+                  target={isEmail ? undefined : "_blank"}
+                  rel={isEmail ? undefined : "noopener noreferrer"}
+                  className="contact-card"
+                >
+                  <span className="contact-card__icon">
+                    <Icon name={social.icon} size={22} />
+                  </span>
+                  <span className="contact-card__body">
+                    <span className="contact-card__title">{social.name}</span>
+                    <span className="contact-card__description">{description}</span>
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );

@@ -1,120 +1,84 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import Icon from "../Icon/Icon";
+import { profile } from "../../data/profile";
 import "./Header.scss";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(profile.navigation[0].id);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Highlights the nav link for whichever section is currently in view.
+  useEffect(() => {
+    const sections = profile.navigation.map((item) => document.getElementById(item.id)).filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
     setMenuOpen(false);
   };
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg navbar-light fixed-top navbar-custom py-2 ${
-        scrolled ? "navbar-scrolled" : ""
-      }`}
-    >
-      <div className="container">
+    <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
+      <nav className="site-header__inner container" aria-label="Primary">
         <a
-          className="navbar-brand fw-bold"
+          className="site-header__brand"
           href="#home"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("home");
           }}
         >
-          Sam Clark
+          {profile.name}
         </a>
 
         <button
-          className={`navbar-toggler ${menuOpen ? "open" : ""}`}
+          className="site-header__toggle"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
           aria-expanded={menuOpen}
-          aria-label="Toggle navigation"
-          onClick={() => setMenuOpen(!menuOpen)}
+          aria-controls="site-nav"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen((open) => !open)}
         >
-          {menuOpen ? (
-            <span className="close-icon">&times;</span>
-          ) : (
-            <span className="navbar-toggler-icon"></span>
-          )}
+          <Icon name={menuOpen ? "close" : "menu"} />
         </button>
 
-        <div className="collapse navbar-collapse mt-3" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
+        <ul id="site-nav" className={`site-header__nav ${menuOpen ? "site-header__nav--open" : ""}`}>
+          {profile.navigation.map((item) => (
+            <li key={item.id}>
               <a
-                className="nav-link"
-                href="#home"
+                href={`#${item.id}`}
+                className={activeSection === item.id ? "is-active" : ""}
+                aria-current={activeSection === item.id ? "page" : undefined}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("home");
+                  scrollToSection(item.id);
                 }}
               >
-                Home
+                {item.label}
               </a>
             </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("about");
-                }}
-              >
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#portfolio"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("portfolio");
-                }}
-              >
-                Portfolio
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("contact");
-                }}
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };
 

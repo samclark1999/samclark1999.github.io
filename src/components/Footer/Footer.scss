@@ -1,223 +1,108 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-.footer-section {
-  position: relative;
-  background: $primary-color;
-  color: $text-on-dark;
-  overflow: hidden;
+.site-footer {
+  padding-top: $space-8;
+  padding-bottom: $space-6;
+  border-top: 1px solid var(--border);
+}
 
-  .footer-main {
-    position: relative;
-    z-index: 2;
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: $space-8;
+  padding-bottom: $space-7;
+  border-bottom: 1px solid var(--border);
+}
 
-    .footer-brand {
-      .brand-name {
-        color: white;
-        margin-bottom: 1rem;
-      }
+.footer-brand__name {
+  font-family: $font-display;
+  font-weight: $font-weight-display;
+  font-size: 1.25rem;
+  margin-bottom: $space-1;
+}
 
-      .brand-description {
-        line-height: 1.7;
-        color: rgba(white, 0.8);
-      }
+.footer-brand__role {
+  color: var(--text-muted);
+  margin-bottom: $space-4;
+}
 
-      .social-links {
-        .social-link {
-          width: 45px;
-          height: 45px;
-          background: rgba(white, 0.15);
-          color: $text-on-dark;
-          border-radius: 50%;
-          @include flex-center();
-          text-decoration: none;
-          @include transition();
-          border: 2px solid transparent;
+.footer-socials {
+  display: flex;
+  gap: $space-3;
 
-          &:hover {
-            background: $accent-color;
-            border-color: $accent-color;
-            color: $text-dark;
-            transform: translateY(-3px);
-          }
+  a {
+    @include flex-center;
+    @include focus-ring;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: color $duration-fast $ease-standard, border-color $duration-fast $ease-standard;
 
-          i {
-            font-size: 1.2rem;
-          }
-        }
-      }
-    }
-
-    .footer-links {
-      .footer-title {
-        color: $text-on-dark;
-        position: relative;
-
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -8px;
-          left: 0;
-          width: 30px;
-          height: 2px;
-          background: $accent-color;
-        }
-      }
-
-      .footer-link {
-        color: rgba(white, 0.7);
-        text-decoration: none;
-        @include transition();
-        display: inline-block;
-
-        &:hover {
-          color: $accent-color;
-          transform: translateX(5px);
-        }
-      }
-    }
-
-    .footer-contact {
-      .footer-title {
-        color: $text-on-dark;
-        position: relative;
-
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -8px;
-          left: 0;
-          width: 30px;
-          height: 2px;
-          background: $accent-color;
-        }
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        color: rgba(white, 0.7);
-
-        i {
-          flex-shrink: 0;
-          width: 20px;
-        }
-
-        .footer-link {
-          color: rgba(white, 0.7);
-          text-decoration: none;
-          @include transition();
-
-          &:hover {
-            color: $accent-color;
-          }
-        }
-      }
-    }
-  }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(white, 0.1);
-    position: relative;
-    z-index: 2;
-
-    .copyright-text {
-      font-size: 0.9rem;
-      color: rgba(white, 0.7);
-    }
-
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      @include flex-center();
-      border: none;
-      background: $accent-color;
-      color: #fff;
-      @include transition();
-      z-index: 1000;
-
-      &:hover {
-        background: $accent-light;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba($primary-color, 0.3);
-      }
-
-      i {
-        font-size: 1.2rem;
-      }
+    &:hover {
+      color: var(--accent);
+      border-color: var(--accent);
     }
   }
 }
 
-// Responsive design
-@include media-breakpoint-down(lg) {
-  .footer-section {
-    .footer-main {
-      .footer-brand {
-        margin-bottom: 2rem;
-      }
+.footer-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-6;
+}
 
-      .footer-links,
-      .footer-contact {
-        margin-bottom: 2rem;
-      }
-    }
+.footer-nav a {
+  @include focus-ring;
+  color: var(--text-muted);
+  font-weight: $font-weight-medium;
+  transition: color $duration-fast $ease-standard;
+
+  &:hover {
+    color: $color-text-on-ink;
   }
 }
 
-@include media-breakpoint-down(md) {
-  .footer-section {
-    .footer-main {
-      text-align: center;
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+  padding-top: $space-6;
 
-      .footer-brand {
-        .brand-name {
-          font-size: 1.8rem;
-        }
+  p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+}
 
-        .social-links {
-          justify-content: center;
-        }
-      }
+.footer-back-to-top {
+  @include button-reset;
+  @include focus-ring;
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transition: transform $duration-fast $ease-standard;
 
-      .footer-links,
-      .footer-contact {
-        .footer-title::after {
-          left: 50%;
-          transform: translateX(-50%);
-        }
-      }
-    }
-
-    .footer-bottom {
-      text-align: center;
-
-      .copyright-text {
-        margin-bottom: 1rem;
-      }
-    }
+  &:hover {
+    transform: translateY(-2px);
   }
 }
 
 @include media-breakpoint-down(sm) {
-  .footer-section {
-    .footer-main {
-      .footer-brand {
-        .social-links {
-          .social-link {
-            width: 40px;
-            height: 40px;
+  .footer-main {
+    flex-direction: column;
+  }
 
-            i {
-              font-size: 1rem;
-            }
-          }
-        }
-      }
-    }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

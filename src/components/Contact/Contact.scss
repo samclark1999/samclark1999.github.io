@@ -1,245 +1,81 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-.contact-section {
-  background-color: $bg-light;
-  background-image: url("../../images/rainier.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  padding-top: 8rem;
-  padding-bottom: 1.5rem;
+.contact-inner {
+  text-align: center;
+}
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 0;
-  }
+.contact-intro {
+  color: var(--text-muted);
+  max-width: 52ch;
+  margin: $space-3 auto 0;
+}
 
-  .container {
-    position: relative;
-    z-index: 2;
-  }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $space-5;
+  margin-top: $space-8;
+}
 
-  .contact-info {
-    background: rgba(255, 253, 241, 0.97);
-    padding: 1.5rem;
-    border-radius: 20px;
-    box-shadow: $box-shadow-lg;
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-6 $space-4;
+  border-radius: $radius-lg;
+  border: 1px solid var(--border);
+  transition: transform $duration-base $ease-standard, border-color $duration-base $ease-standard,
+    background-color $duration-base $ease-standard;
 
-    .contact-header {
-      .section-title {
-        position: relative;
+  @include focus-ring;
 
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 60px;
-          height: 4px;
-          background: $accent-color;
-          border-radius: 2px;
-        }
-      }
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2rem;
-    }
-
-    .contact-item {
-      .contact-link {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: inherit;
-        padding: 1.5rem;
-        border-radius: 15px;
-        @include transition(all, 0.3s, ease);
-        cursor: pointer;
-
-        &:hover {
-          background: rgba($primary-color, 0.1);
-          transform: translateY(-3px);
-
-          .contact-icon {
-            background: $primary-color;
-            color: white;
-            transform: scale(1.1);
-          }
-
-          .contact-title {
-            color: $primary-color;
-          }
-        }
-      }
-
-      .contact-icon {
-        width: 60px;
-        height: 60px;
-        background: rgba($primary-color, 0.1);
-        color: $primary-color;
-        border-radius: 50%;
-        @include flex-center();
-        margin-bottom: 1rem;
-        @include transition(all, 0.3s, ease);
-      }
-
-      .contact-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .contact-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: $text-dark;
-        margin: 0 0 0.5rem 0;
-        @include transition(color, 0.3s, ease);
-      }
-
-      .contact-description {
-        font-size: 0.9rem;
-        color: $text-light;
-        margin: 0;
-        line-height: 1.4;
-      }
-    }
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    background: rgba($color-coral, 0.08);
   }
 }
 
-// Animation for contact info
-@keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.contact-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color-coral, 0.14);
+  color: var(--accent);
 }
 
-.contact-info {
-  animation: slideInFromBottom 0.6s ease-out;
+.contact-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
 }
 
-// Responsive design
-@include media-breakpoint-down(lg) {
-  .contact-section {
-    .contact-info {
-      padding: 2.5rem;
+.contact-card__title {
+  font-weight: $font-weight-bold;
+}
 
-      .contact-grid {
-        gap: 1.5rem;
-      }
-
-      .contact-item {
-        .contact-link {
-          padding: 1.25rem;
-        }
-
-        .contact-icon {
-          width: 55px;
-          height: 55px;
-        }
-      }
-    }
-  }
+.contact-card__description {
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
 
 @include media-breakpoint-down(md) {
-  .contact-section {
-    .contact-info {
-      padding: 2rem;
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .contact-item {
-        .contact-link {
-          padding: 1.5rem;
-          flex-direction: row;
-          text-align: left;
-          justify-content: flex-start;
-          align-items: center;
-        }
-
-        .contact-icon {
-          width: 50px;
-          height: 50px;
-          margin-bottom: 0;
-          margin-right: 1rem;
-          flex-shrink: 0;
-        }
-
-        .contact-content {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .contact-title {
-          text-align: left;
-          margin: 0 0 0.25rem 0;
-          align-self: flex-start;
-        }
-
-        .contact-description {
-          text-align: left;
-          font-size: 0.85rem;
-        }
-      }
-    }
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
-}
 
-@include media-breakpoint-down(sm) {
-  .contact-section {
-    .section-title {
-      font-size: 2rem;
-    }
+  .contact-card {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+  }
 
-    .section-subtitle {
-      font-size: 1rem;
-    }
-
-    .contact-info {
-      padding: 1.5rem;
-
-      .contact-item {
-        .contact-link {
-          padding: 1rem;
-        }
-
-        .contact-icon {
-          width: 45px;
-          height: 45px;
-
-          i {
-            font-size: 1.2rem;
-          }
-        }
-
-        .contact-title {
-          font-size: 1rem;
-        }
-      }
-    }
+  .contact-card__body {
+    text-align: left;
   }
 }

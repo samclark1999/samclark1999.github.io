@@ -1,0 +1,48 @@
+import {
+  SiReact,
+  SiJavascript,
+  SiSass,
+  SiJquery,
+  SiNodedotjs,
+  SiPython,
+  SiPhp,
+  SiMongodb,
+  SiMysql,
+  SiWordpress,
+  SiHubspot,
+  SiFigma,
+  SiDocker,
+  SiGoogle,
+  SiAsana,
+  SiGoogletagmanager,
+  SiGoogleanalytics,
+} from "react-icons/si";
+import { FaSlack } from "react-icons/fa";
+import { FaUniversalAccess, FaMagnifyingGlassChart, FaRobot, FaInfinity, FaPalette } from "react-icons/fa6";
+
+// Looked up once here so skills.js just references a short key by name.
+export const SKILL_ICONS = {
+  react: SiReact,
+  javascript: SiJavascript,
+  sass: SiSass,
+  jquery: SiJquery,
+  a11y: FaUniversalAccess,
+  seo: FaMagnifyingGlassChart,
+  nodejs: SiNodedotjs,
+  python: SiPython,
+  php: SiPhp,
+  llm: FaRobot,
+  mongodb: SiMongodb,
+  mysql: SiMysql,
+  wordpress: SiWordpress,
+  hubspot: SiHubspot,
+  adobe: FaPalette,
+  figma: SiFigma,
+  docker: SiDocker,
+  cicd: FaInfinity,
+  google: SiGoogle,
+  slack: FaSlack,
+  asana: SiAsana,
+  gtm: SiGoogletagmanager,
+  ga4: SiGoogleanalytics,
+};

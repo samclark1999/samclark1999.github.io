@@ -1,0 +1,144 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.skills-carousel__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  justify-content: center;
+  margin-bottom: $space-8;
+}
+
+.skills-carousel__tab {
+  @include button-reset;
+  @include focus-ring;
+  @include transition();
+  padding: $space-2 $space-4;
+  border-radius: $radius-pill;
+  font-size: 0.8125rem;
+  font-weight: $font-weight-medium;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  &.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+}
+
+.skills-carousel__viewport {
+  position: relative;
+  height: 280px;
+  perspective: 1400px;
+  isolation: isolate;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+
+  @include focus-ring;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.skills-carousel__stack {
+  position: absolute;
+  inset: 0;
+}
+
+.skill-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 168px;
+  height: 200px;
+  margin-left: -84px;
+  margin-top: -100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-3;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.22, 0.85, 0.32, 1), opacity 0.45s ease, filter 0.45s ease,
+    box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.skill-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: $radius-md;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-card__name {
+  font-weight: $font-weight-bold;
+  font-size: 0.875rem;
+  text-align: center;
+  padding-inline: $space-2;
+}
+
+.skill-card.is-active {
+  box-shadow: 0 0 0 2px var(--accent), var(--shadow-md);
+}
+
+.skills-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-5;
+  margin-top: $space-7;
+}
+
+.arrow-btn {
+  @include button-reset;
+  @include focus-ring;
+  @include flex-center;
+  @include transition();
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: inherit;
+
+  &:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.arrow-btn__icon--prev {
+  transform: rotate(180deg);
+}
+
+.skills-carousel__counter {
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: $font-weight-medium;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5em;
+  text-align: center;
+}

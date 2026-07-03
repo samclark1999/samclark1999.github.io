@@ -10,14 +10,15 @@ const Contact = () => {
         <div className="section-heading">
           <p className="eyebrow section-heading__eyebrow">Get In Touch</p>
           <h2>Let's build something</h2>
-          <p className="contact-intro">Reach out however's easiest for you — email, LinkedIn, or GitHub.</p>
         </div>
 
         <ul className="contact-grid">
           {profile.socials.map((social) => {
             const isEmail = social.name === "Email";
             const href = isEmail ? getMailtoHref() : social.href;
-            const description = isEmail ? getEmailAddress() : social.description;
+            const description = isEmail
+              ? getEmailAddress()
+              : social.description;
 
             return (
               <li key={social.name}>
@@ -34,7 +35,9 @@ const Contact = () => {
                   </span>
                   <span className="contact-card__body">
                     <span className="contact-card__title">{social.name}</span>
-                    <span className="contact-card__description">{description}</span>
+                    <span className="contact-card__description">
+                      {description}
+                    </span>
                   </span>
                 </a>
               </li>

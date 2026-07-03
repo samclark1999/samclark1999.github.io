@@ -7,13 +7,11 @@ const scrollToSection = (sectionId) => {
   document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="site-footer section--ink">
+    <footer className="site-footer">
       <div className="container footer-inner">
         <div className="footer-main">
           <div className="footer-brand">
@@ -61,9 +59,6 @@ const Footer = () => {
           <p>
             © {currentYear} {profile.name}. All rights reserved.
           </p>
-          <button type="button" className="footer-back-to-top" onClick={scrollToTop} aria-label="Back to top">
-            <Icon name="chevronUp" size={18} />
-          </button>
         </div>
       </div>
     </footer>

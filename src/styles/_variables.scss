@@ -9,6 +9,9 @@ $color-ink-border: rgba(251, 247, 240, 0.12);
 $color-cream: #fbf7f0; // primary light section background
 $color-cream-raised: #ffffff; // card/surface on top of $color-cream
 $color-cream-border: rgba(22, 26, 29, 0.1);
+$color-slate: #23282c; // tertiary dark background — footer, to separate it from $color-ink sections
+$color-slate-raised: #2b3136; // card/surface on top of $color-slate
+$color-slate-border: rgba(251, 247, 240, 0.1);
 
 $color-text-on-ink: #fbf7f0;
 $color-text-on-ink-muted: #a49c92;
@@ -83,4 +86,5 @@ $header-height: 76px;
 
 // Z-index scale
 $z-header: 100;
+$z-back-to-top: 90;
 $z-overlay: 200;

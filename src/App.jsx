@@ -5,6 +5,7 @@ import Achievements from "./components/Achievements/Achievements";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import BackToTop from "./components/BackToTop/BackToTop";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

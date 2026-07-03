@@ -5,6 +5,17 @@
   padding-top: $space-8;
   padding-bottom: $space-6;
   border-top: 1px solid var(--border);
+  // Distinct third surface (Slate) so the footer reads as its own band
+  // instead of blending into the Contact section's Ink background.
+  background: $color-slate;
+  color: $color-text-on-ink;
+  --surface: #{$color-slate-raised};
+  --border: #{$color-slate-border};
+  --text-muted: #{$color-text-on-ink-muted};
+  --accent: #{$color-coral};
+  --accent-contrast: #{$color-coral-text-on};
+  --shadow-sm: #{$shadow-sm-on-ink};
+  --shadow-md: #{$shadow-md-on-ink};
 }
 
 .footer-main {
@@ -31,6 +42,7 @@
 .footer-socials {
   display: flex;
   gap: $space-3;
+  padding-left: 0;
 
   a {
     @include flex-center;
@@ -40,7 +52,9 @@
     border-radius: 50%;
     border: 1px solid var(--border);
     color: var(--text-muted);
-    transition: color $duration-fast $ease-standard, border-color $duration-fast $ease-standard;
+    transition:
+      color $duration-fast $ease-standard,
+      border-color $duration-fast $ease-standard;
 
     &:hover {
       color: var(--accent);
@@ -77,22 +91,6 @@
   p {
     color: var(--text-muted);
     font-size: 0.875rem;
-  }
-}
-
-.footer-back-to-top {
-  @include button-reset;
-  @include focus-ring;
-  @include flex-center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--accent-contrast);
-  transition: transform $duration-fast $ease-standard;
-
-  &:hover {
-    transform: translateY(-2px);
   }
 }
 

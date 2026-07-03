@@ -1,5 +1,7 @@
 // `link` points at a GitHub repo unless `isClient` is true, in which case it
 // points at the live client site (the card's CTA label switches accordingly).
+// `category` drives the Projects section filter: "personal" side projects vs
+// "career" client/employer work.
 export const projects = [
   {
     id: 1,
@@ -8,6 +10,7 @@ export const projects = [
     technologies: ["React", "Node.js", "Webpack", "SASS"],
     link: "https://github.com/samclark1999/samclark1999.github.io",
     isClient: false,
+    category: "personal",
   },
   {
     id: 2,
@@ -17,6 +20,7 @@ export const projects = [
     technologies: ["React", "Node.js", "Docker", "MongoDB", "Google Cloud"],
     link: "https://github.com/samclark1999/Clark-Financial-Full-Stack",
     isClient: false,
+    category: "personal",
   },
   {
     id: 3,
@@ -26,6 +30,7 @@ export const projects = [
     technologies: ["React", "Node.js"],
     link: "https://github.com/samclark1999/to_Do_List",
     isClient: false,
+    category: "personal",
   },
   {
     id: 4,
@@ -34,6 +39,7 @@ export const projects = [
     technologies: ["PHP", "WordPress", "JavaScript", "jQuery"],
     link: "https://github.com/samclark1999/wp-post-status-changer",
     isClient: false,
+    category: "career",
   },
   {
     id: 5,
@@ -43,6 +49,7 @@ export const projects = [
     technologies: ["WordPress", "PHP", "JavaScript", "SASS"],
     link: "https://andersonadvisors.com",
     isClient: true,
+    category: "career",
   },
   {
     id: 6,
@@ -52,5 +59,16 @@ export const projects = [
     technologies: ["WordPress", "PHP", "JavaScript", "SASS"],
     link: "https://warespace.com",
     isClient: true,
+    category: "career",
+  },
+  {
+    id: 7,
+    title: "Chord Specialty Partners",
+    description:
+      "One of 11 WordPress sites I built for this client. I developed a custom WordPress theme and, over the course of a year, rolled it out across each of the 11 practices, adapting the branding for every site.",
+    technologies: ["WordPress", "JavaScript", "PHP", "SASS"],
+    link: "https://childrensdentalhealth.com",
+    isClient: true,
+    category: "career",
   },
 ];

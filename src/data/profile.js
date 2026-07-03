@@ -10,8 +10,9 @@ export const profile = {
   },
   tagline: "Crafting fast, accessible, high-performing websites for clients.",
   bio: [
-    "At Level Agency, I lead website redesign projects and serve as the primary developer for a portfolio of client retainers, pairing custom WordPress themes with React-built Gutenberg blocks. My work spans the full lifecycle — site migrations, DNS and SSL configuration, custom WordPress plugin development, and production launch validation — always with an eye toward accessibility, performance, and clean code.",
-    "I've also brought AI into the workflow itself: integrating Claude Code into our development process, training internal agents on legacy codebases, and documenting systems to help other developers move faster. I'm passionate about blending creativity, strategy, and technology to solve real problems on the web — if you're curious how AI fits into a dev workflow, or just want to talk performance and clean code, I'd love to connect.",
+    "Most websites look great but never reach their full potential. The problem usually isn't design; it's that the site wasn't built with performance, SEO, or scalability in mind.",
+    "That's where I come in. I build websites and applications that look great and perform even better. At Level Agency, I've led full site redesigns and served as the primary developer on client retainers, shipping fast, accessible, and scalable builds across React, WordPress, and everything in between.",
+    "If you're looking for someone who thinks about the whole picture, not just how a site looks but how it performs and grows, let's connect!",
   ],
   stats: [
     { value: 1000, suffix: "+", decimals: 0, label: "Tasks Completed" },

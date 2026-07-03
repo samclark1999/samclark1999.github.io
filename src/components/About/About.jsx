@@ -24,9 +24,12 @@ const About = () => {
   return (
     <section id="about" className="about section section--cream">
       <div className="container">
-        <div ref={contentRef} className={`reveal ${contentVisible ? "is-visible" : ""}`}>
+        <div
+          ref={contentRef}
+          className={`reveal ${contentVisible ? "is-visible" : ""}`}
+        >
           <div className="section-heading">
-            <h2>Experience at Level</h2>
+            <h2>About Me</h2>
           </div>
 
           <div className="about-bio">
@@ -44,7 +47,9 @@ const About = () => {
 
         <div className="about-skills">
           <h2>My Skills</h2>
-          <p className="about-skills__intro">Technologies and tools I work with</p>
+          <p className="about-skills__intro">
+            Technologies and tools I work with
+          </p>
           <SkillsCarousel />
         </div>
       </div>

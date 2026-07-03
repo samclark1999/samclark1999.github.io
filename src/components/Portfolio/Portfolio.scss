@@ -7,15 +7,91 @@
   margin-top: $space-3;
 }
 
+// ─── Filters ─────────────────────────────────────────────────────────────
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-7;
+  margin-bottom: $space-6;
+}
+
+.portfolio-filter {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input,
+  select {
+    @include focus-ring;
+    appearance: none;
+    font: inherit;
+    color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    padding: $space-3 $space-4;
+    min-height: 44px;
+    width: 100%;
+  }
+
+  select {
+    padding-right: $space-7;
+    cursor: pointer;
+  }
+
+  input[type="search"] {
+    padding-left: $space-7;
+    width: 220px;
+    max-width: 100%;
+  }
+}
+
+.portfolio-filter--search {
+  @include media-breakpoint-down(md) {
+    flex: 1 1 100%;
+  }
+}
+
+.portfolio-filter--select {
+  @include media-breakpoint-down(md) {
+    flex: 1 1 calc(50% - #{$space-3} / 2);
+  }
+}
+
+.portfolio-filter__icon {
+  position: absolute;
+  color: var(--text-muted);
+  pointer-events: none;
+  left: $space-3;
+}
+
+.portfolio-filter__icon--end {
+  left: auto;
+  right: $space-3;
+}
+
+.portfolio-empty {
+  color: var(--text-muted);
+  padding: $space-7 0;
+  text-align: center;
+}
+
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: $space-6;
 }
 
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
+  flex: 1 1 calc((100% - 2 * #{$space-6}) / 3);
+  min-width: 280px;
+  max-width: calc((100% - 2 * #{$space-6}) / 3);
   padding: $space-6;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -29,8 +105,34 @@
   }
 
   h3 {
+    margin-top: $space-2;
     margin-bottom: $space-2;
+    padding-right: $space-9;
   }
+}
+
+.project-card__badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: $space-1 $space-3;
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-top-right-radius: $radius-lg;
+  border-bottom-left-radius: $radius-md;
+}
+
+.project-card__badge--personal {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.project-card__badge--career {
+  background: $color-ink;
+  color: $color-text-on-ink;
 }
 
 .project-card__description {
@@ -45,6 +147,65 @@
   justify-content: flex-start;
   gap: $space-2;
   margin-bottom: $space-4;
+}
+
+.portfolio-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-3;
+  margin-top: $space-8;
+}
+
+.portfolio-pagination__arrow,
+.portfolio-pagination__page {
+  @include button-reset;
+  @include focus-ring;
+  @include flex-center;
+  @include transition();
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: inherit;
+
+  &:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.portfolio-pagination__page {
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: $font-weight-medium;
+
+  &.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+}
+
+.portfolio-pagination__icon--prev {
+  transform: rotate(180deg);
+}
+
+.portfolio-load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: $space-8;
+
+  .link-arrow {
+    @include button-reset;
+    color: var(--accent);
+  }
 }
 
 .portfolio-more {

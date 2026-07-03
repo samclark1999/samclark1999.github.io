@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Icon from "../Icon/Icon";
 import { skillCategories, skills } from "../../data/skills";
 import { SKILL_ICONS } from "./skillIcons";
@@ -7,19 +7,25 @@ import "./SkillsCarousel.scss";
 const STEP = 128;
 const ROTATE = 26;
 const DRAG_THRESHOLD = 50;
+// 5 cards on the slide (2 either side of active) on desktop, 3 (1 either
+// side) below the md breakpoint — cards past this distance are hidden.
+const MOBILE_QUERY = "(max-width: 767px)";
+const MAX_DISTANCE_DESKTOP = 2;
+const MAX_DISTANCE_MOBILE = 1;
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
 const getSkillsForCategory = (categoryId) =>
   categoryId === "all" ? skills : skills.filter((skill) => skill.category === categoryId);
 
-const cardStyle = (distance, dragOffsetPx) => {
-  const clamped = clamp(distance, -4, 4);
-  const scale = Math.max(0.68, 1.14 - Math.abs(clamped) * 0.16);
+const cardStyle = (distance, dragOffsetPx, maxDistance) => {
+  const clamped = clamp(distance, -maxDistance, maxDistance);
+  const falloff = Math.abs(clamped) / maxDistance;
+  const scale = Math.max(0.68, 1.14 - falloff * 0.46);
   // Recede distant cards via brightness/scale only, not opacity — fading
   // opacity toward a same-color backdrop collapses text contrast below AA.
-  const brightness = Math.max(0.55, 1 - Math.abs(clamped) * 0.14);
-  const visible = Math.abs(distance) <= 4;
+  const brightness = Math.max(0.55, 1 - falloff * 0.45);
+  const visible = Math.abs(distance) <= maxDistance;
 
   return {
     transform: `translateX(${distance * STEP + dragOffsetPx}px) rotateY(${-clamped * ROTATE}deg) scale(${scale})`,
@@ -36,9 +42,22 @@ const SkillsCarousel = () => {
     Math.floor(getSkillsForCategory(skillCategories[0].id).length / 2),
   );
   const [dragOffset, setDragOffset] = useState(0);
+  const [maxDistance, setMaxDistance] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia(MOBILE_QUERY).matches
+      ? MAX_DISTANCE_MOBILE
+      : MAX_DISTANCE_DESKTOP,
+  );
   const dragOffsetRef = useRef(0);
   const draggingRef = useRef(false);
   const startXRef = useRef(0);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_QUERY);
+    const updateMaxDistance = (e) => setMaxDistance(e.matches ? MAX_DISTANCE_MOBILE : MAX_DISTANCE_DESKTOP);
+    updateMaxDistance(mediaQuery);
+    mediaQuery.addEventListener("change", updateMaxDistance);
+    return () => mediaQuery.removeEventListener("change", updateMaxDistance);
+  }, []);
 
   const categorySkills = useMemo(() => getSkillsForCategory(activeCategory), [activeCategory]);
   const activeSkill = categorySkills[activeIndex];
@@ -121,7 +140,7 @@ const SkillsCarousel = () => {
               <div
                 key={skill.name}
                 className={`skill-card ${isActive ? "is-active" : ""}`}
-                style={cardStyle(distance, dragOffset)}
+                style={cardStyle(distance, dragOffset, maxDistance)}
                 onClick={() => setActiveIndex(index)}
               >
                 <div className="skill-card__icon" style={{ color: skill.color }}>

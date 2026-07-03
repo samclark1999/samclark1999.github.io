@@ -38,6 +38,16 @@ export const ICONS = {
     type: "stroke",
     paths: ["M6 15l6-6 6 6"],
   },
+  chevronDown: {
+    viewBox: "0 0 24 24",
+    type: "stroke",
+    paths: ["M6 9l6 6 6-6"],
+  },
+  search: {
+    viewBox: "0 0 24 24",
+    type: "stroke",
+    paths: ["M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z", "m21 21-4.35-4.35"],
+  },
   trophy: {
     viewBox: "0 0 24 24",
     type: "stroke",

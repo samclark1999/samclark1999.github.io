@@ -1,0 +1,36 @@
+@use "sass:color";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.back-to-top {
+  @include button-reset;
+  @include focus-ring;
+  @include flex-center;
+  position: fixed;
+  right: $space-5;
+  bottom: $space-5;
+  z-index: $z-back-to-top;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  background: $color-coral;
+  color: $color-coral-text-on;
+  box-shadow: $shadow-md-on-ink;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity $duration-base $ease-standard, transform $duration-base $ease-standard,
+    visibility 0s linear $duration-base, background-color $duration-fast $ease-standard;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity $duration-base $ease-standard, transform $duration-base $ease-standard, visibility 0s linear 0s,
+      background-color $duration-fast $ease-standard;
+  }
+
+  &:hover {
+    background: color.adjust($color-coral, $lightness: -8%);
+  }
+}
